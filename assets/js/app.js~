@@ -1,0 +1,8 @@
+function validaremail(formulario) { 
+if (document.formulario.email.value.indexOf('@') == -1) 
+alert ("La \"Dirección de Email\" no es correcta"); 
+document.formulario.email.focus() ;
+else { 
+document.formulario.submit(); 
+} 
+}  
