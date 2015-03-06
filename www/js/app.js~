@@ -48,16 +48,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
- .state('tab.registro', {
-    url: '/registro',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/registro2.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
   .state('tab.chats', {
       url: '/chats',
       views: {
