@@ -58,8 +58,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+<<<<<<< HEAD
   .state('tab.mapa', {
       url: '/mapa',
+=======
+ .state('tab.listadoCesta', {
+    url: '/listadoCesta',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/listadoCesta.html',
+        controller: 'ListadoCestaCtrl'
+      }
+    }
+  })
+
+  .state('tab.chats', {
+      url: '/chats',
+>>>>>>> 8be16ce26ba85ebf3888a9e10672c0c4dac34967
       views: {
         'tab-chats': {
           templateUrl: 'templates/mapa.html',
