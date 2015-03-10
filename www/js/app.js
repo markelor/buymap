@@ -58,6 +58,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+ .state('tab.listadoCesta', {
+    url: '/listadoCesta',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/listadoCesta.html',
+        controller: 'ListadoCestaCtrl'
+      }
+    }
+  })
+
   .state('tab.chats', {
       url: '/chats',
       views: {

@@ -6,8 +6,16 @@ angular.module('starter.controllers', [])
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
     Chats.remove(chat);
-  }
+  };
 })
+//listado de cesta controller
+.controller('ListadoCestaCtrl', function($scope, Productos) {
+ /*$scope.shouldShowDelete = false;
+ $scope.shouldShowReorder = false;
+ $scope.listCanSwipe = false;*/
+ $scope.productos=Productos.all();
+})
+
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
@@ -25,4 +33,5 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
+
 });
