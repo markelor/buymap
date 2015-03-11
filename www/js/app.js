@@ -65,7 +65,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-dash': {
         templateUrl: 'templates/registro2.html',
-        controller: 'DashCtrl'
+        controller: 'RegistroCtrl'
+      }
+    }
+  })
+ .state('tab.login', {
+    url: '/login',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/login.html',
+        controller: 'LoginCtrl'
       }
     }
   })
