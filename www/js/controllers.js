@@ -90,10 +90,14 @@ angular.module('starter.controllers', [])
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
-  }
+  };
 })
 
-.controller('MapCtrl', function($scope, $ionicLoading, $compile) {
+.controller('MapCtrl', function($scope,$ionicSideMenuDelegate, $ionicLoading, $compile) {
+
+      $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
       $scope.init = function (){
       //function initialize() {
         var myLatlng = new google.maps.LatLng(43.07493,-89.381388);
@@ -127,7 +131,8 @@ angular.module('starter.controllers', [])
 
         $scope.map = map;
         
-      }
+        
+      };
     //  google.maps.event.addDomListener(window, 'load', initialize);
       
       $scope.centerOnMe = function() {
@@ -136,22 +141,25 @@ angular.module('starter.controllers', [])
         }
 
 
-        $scope.loading = $ionicLoading.show({
+        /*$scope.loading = $ionicLoading.show({
           content: 'Getting current location...',
           showBackdrop: false
-        });
+        });*/
 
 
         navigator.geolocation.getCurrentPosition(function(pos) {
+
           $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
           //$scope.loading.hide();
+          console.log(pos.coords.latitude);
         }, function(error) {
           alert('Unable to get location: ' + error.message);
         });
+        
       };
       
       $scope.clickTest = function() {
-        alert('Example of infowindow with ng-click')
+        alert('Example of infowindow with ng-click');
       };
       
     });
