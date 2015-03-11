@@ -1,6 +1,10 @@
-<ion-list>
-  <ion-item>Hello!</ion-item>
-  <ion-item href="#/detail">
-    Link to detail page
-  </ion-item>
-</ion-list>
+<ion-header-bar class="bar-dark" ng-init="init()" >
+  <h1 class="title">Ruta de compra</h1>
+</ion-header-bar>
+<ion-content>
+
+  <div id="map" data-tap-disabled="true"></div>
+</ion-content>
+<ion-footer-bar class="bar-dark">
+  <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate">Buscar mi ubicación</a>
+</ion-footer-bar>

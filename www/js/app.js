@@ -48,6 +48,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+ .state('tab.mapa', {
+    url: '/mapa',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/mapa.html',
+        controller: 'MapCtrl'
+      }
+    }
+  })
+
+
+
  .state('tab.registro', {
     url: '/registro',
     views: {
@@ -58,10 +70,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-<<<<<<< HEAD
-  .state('tab.mapa', {
-      url: '/mapa',
-=======
  .state('tab.listadoCesta', {
     url: '/listadoCesta',
     views: {
@@ -72,16 +80,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
->>>>>>> 8be16ce26ba85ebf3888a9e10672c0c4dac34967
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/mapa.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
     .state('tab.chat-detail', {
       url: '/chats/:chatId',
       views: {
