@@ -1,10 +1,6 @@
 angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
-//Loginaren controllera
-.controller('LoginCtrl', function($scope) {})
-//registroaren controllera
-.controller('RegistroCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   $scope.chats = Chats.all();
