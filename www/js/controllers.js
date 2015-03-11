@@ -141,7 +141,7 @@ angular.module('starter.controllers', [])
           showBackdrop: false
         });
 
-<<<<<<< HEAD
+
         navigator.geolocation.getCurrentPosition(function(pos) {
           $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
           //$scope.loading.hide();
@@ -155,8 +155,8 @@ angular.module('starter.controllers', [])
       };
       
     });
-=======
-});
+
+//});
 
   
->>>>>>> 5806784248df96ee0c4e6a9edb970f20b6d1579b
+
