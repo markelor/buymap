@@ -98,6 +98,7 @@ angular.module('starter.controllers', [])
         });
         //function initialize() {
         var myLatlng = new google.maps.LatLng(43.07493, -89.381388);
+       // var myLatlng=new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude
 
         var mapOptions = {
             center: myLatlng,
