@@ -12,6 +12,7 @@ angular.module('starter.controllers', [])
     Chats.remove(chat);
   };
 })
+<<<<<<< HEAD
 
 //listado de cesta controller
 .controller('ListadoCestaCtrl', function($scope,$ionicSideMenuDelegate,Productos) {
@@ -76,6 +77,8 @@ angular.module('starter.controllers', [])
  };
 });
 
+=======
+>>>>>>> c23653c2ef353e143573b4753f16b3097cee23e1
 
 */
 
