@@ -1,32 +1,17 @@
 angular.module('starter.db', [])
+
 .factory('Db', function() {
-var localDB = new PouchDB("buymap");
+    var localDB = new PouchDB("buymap");
 
-
-
- var getAllProductos = function (succes){
-
-
-    $.getJSON("../server/productos.json",{}, function(productos){
-
-
-        console.log(productos);
-
-
-
-    });
-
-
-    return {
-
-         getAllProductos:getAllProductos()
+    var getAllProductos = function(success) {
+        localDB.get().then(function(data){
+            success(data);
+        });
     };
 
-
- };
-
-        
-
+    return {
+        getAllProductos: getAllProductos
+    };
 
 })
 
@@ -107,8 +92,8 @@ var localDB = new PouchDB("buymap");
         face: 'https://pbs.twimg.com/profile_images/491995398135767040/ie2Z_V6e.jpeg'
     }];
 
-   //cambiar las funciones necesarias para establecimientos 
-  return {
+    //cambiar las funciones necesarias para establecimientos 
+    return {
         all: function() {
             return productos;
         },
