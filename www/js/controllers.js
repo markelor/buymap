@@ -1,14 +1,15 @@
 angular.module('starter.controllers', [])
 
 //mislistas controller
-.controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $timeout, $location, $ionicModal, Productos) {
+.controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $timeout, $location, Productos) {
 
-    $ionicModal.fromTemplateUrl('my-modal.html', {
+   /* $ionicModal.fromTemplateUrl('misListas.html', {
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function(modal) {
         $scope.modal = modal;
     });
+*/
 
     $scope.toggleLeft = function() {
         $ionicSideMenuDelegate.toggleLeft();
@@ -19,7 +20,6 @@ angular.module('starter.controllers', [])
     };
   
 
-   
     //mover
 
     $scope.moveItem = function(producto, fromIndex, toIndex) {
@@ -51,7 +51,7 @@ angular.module('starter.controllers', [])
                 //editar
                 if (index === 1) {
                     console.log(index);
-                    $scope.modal.show();
+                    //$scope.modal.show();
                     //obtenemos el usuario a editar con routeParams
                     /* $scope.textButton = "Editar usuario";
                      $scope.usuario = $scope.usuarios[$routeParams.id];
