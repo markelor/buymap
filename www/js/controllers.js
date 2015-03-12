@@ -4,7 +4,11 @@ angular.module('starter.controllers', [])
 //Loginaren controllera
 .controller('LoginCtrl', function($scope) {})
 //registroaren controllera
-.controller('RegistroCtrl', function($scope) {})
+.controller('RegistroCtrl', function($scope) {
+
+
+
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   $scope.chats = Chats.all();
