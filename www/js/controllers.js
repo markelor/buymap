@@ -120,6 +120,15 @@ angular.module('starter.controllers', [])
         $ionicSideMenuDelegate.toggleLeft();
     };
     $scope.init = function() {
+
+      navigator.geolocation.getCurrentPosition(function(pos) {
+
+            $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+            //$scope.loading.hide();
+            console.log(pos.coords.latitude);
+        }, function(error) {
+            alert('Unable to get location: ' + error.message);
+        });
         //function initialize() {
         var myLatlng = new google.maps.LatLng(43.07493, -89.381388);
 
@@ -131,6 +140,12 @@ angular.module('starter.controllers', [])
 
         var map = new google.maps.Map(document.getElementById("map"),
             mapOptions);
+         var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Ubicación actual'
+        });
+
 
         //Marker + infowindow + angularjs compiled ng-click
         var contentString = "<div><a ng-click='clickTest()'>Click me!</a></div>";
@@ -140,11 +155,13 @@ angular.module('starter.controllers', [])
             content: compiled[0]
         });
 
-        var marker = new google.maps.Marker({
+       /* var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
             title: 'Uluru (Ayers Rock)'
-        });
+        });*/
+
+
 
         google.maps.event.addListener(marker, 'click', function() {
             infowindow.open(map, marker);
@@ -168,20 +185,13 @@ angular.module('starter.controllers', [])
         });*/
 
 
-        navigator.geolocation.getCurrentPosition(function(pos) {
-
-            $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-            //$scope.loading.hide();
-            console.log(pos.coords.latitude);
-        }, function(error) {
-            alert('Unable to get location: ' + error.message);
-        });
+        
 
     };
 
-    $scope.clickTest = function() {
+    /*$scope.clickTest = function() {
         alert('Example of infowindow with ng-click');
-    };
+    };*/
 
 });
 
