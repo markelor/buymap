@@ -160,4 +160,3 @@ angular.module('starter.controllers', [])
 
 });
 
-//});
