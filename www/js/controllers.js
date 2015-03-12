@@ -171,4 +171,3 @@ angular.module('starter.controllers', [])
 
 });
 
-//});
