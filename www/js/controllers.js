@@ -1,6 +1,5 @@
 angular.module('starter.controllers', [])
 
-
 //mislistas controller
 .controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $timeout, $location, $ionicModal, Productos) {
 
@@ -169,5 +168,15 @@ angular.module('starter.controllers', [])
         alert('Example of infowindow with ng-click');
     };*/
 
-});
+})
+
+//Loginaren controllera
+.controller('LoginCtrl', function($scope) {})
+//registroaren controllera
+.controller('RegistroCtrl', function($scope) {
+
+
+
+})
+;
 

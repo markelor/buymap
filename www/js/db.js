@@ -3,6 +3,7 @@ angular.module('starter.db', [])
 var localDB = new PouchDB("buymap");
 
 
+<<<<<<< HEAD
  var getAllProductos = function (succes){
 
 
@@ -26,6 +27,8 @@ var localDB = new PouchDB("buymap");
 
         
 
+=======
+>>>>>>> 559df2ab78096b8f73d2e38b4098ca2d105d71e7
 })
 
 
