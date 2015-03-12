@@ -1,20 +1,8 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
-    //Loginaren controllera
-    .controller('LoginCtrl', function($scope) {})
-    //registroaren controllera
-    .controller('RegistroCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope, Chats) {
-    $scope.chats = Chats.all();
-    $scope.remove = function(chat) {
-        Chats.remove(chat);
-    };
-})
-
-//listado de cesta controller
-.controller('ListadoCestaCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $timeout, $location, Productos) {
+//mislistas controller
+.controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $timeout, $location, Productos) {
 
     $scope.toggleLeft = function() {
         $ionicSideMenuDelegate.toggleLeft();
@@ -24,10 +12,6 @@ angular.module('starter.controllers', [])
         showDelete: false
     };
 
-    //compartir
-    $scope.share = function(producto) {
-        alert('Share producto: ' + producto.id);
-    };
     //mover
 
     $scope.moveItem = function(producto, fromIndex, toIndex) {
@@ -96,25 +80,8 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-    $scope.chat = Chats.get($stateParams.chatId);
-})
 
-.controller('FriendsCtrl', function($scope, Friends) {
-    $scope.friends = Friends.all();
-})
-
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
-    $scope.friend = Friends.get($stateParams.friendId);
-})
-
-.controller('AccountCtrl', function($scope) {
-    $scope.settings = {
-        enableFriends: true
-    };
-})
-
-.controller('MapCtrl', function($scope, $ionicSideMenuDelegate, $ionicLoading, $compile) {
+.controller('RutaCtrl', function($scope, $ionicSideMenuDelegate, $ionicLoading, $compile) {
 
     $scope.toggleLeft = function() {
         $ionicSideMenuDelegate.toggleLeft();

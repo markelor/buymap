@@ -1,4 +1,3 @@
-
 <ion-side-menus>
     <!-- Center content -->
     <ion-side-menu-content>
@@ -21,16 +20,9 @@
 
             <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
 
-                <ion-item ng-repeat="producto in productos" producto="poducto" href="#/listadoCesta/{{producto.id}}" class="item-remove-animate">
-                    <button  class="button button-clear button-dark" ng-click="show(producto)">{{ producto.name }}</button>
-                    <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(producto)">
-                    </ion-delete-button>
-                    <ion-option-button class="button-assertive" ng-click="edit(producto)">
-                        Edit
-                    </ion-option-button>
-                    <ion-option-button class="button-calm" ng-click="share(producto)">
-                        Share
-                    </ion-option-button>
+                <ion-item ng-repeat="producto in productos" producto="poducto" class="item-remove-animate">
+                    <button class="button button-clear button-dark" ng-click="show(producto)">{{ producto.name }}</button>
+
                     <ion-reorder-button class="ion-navicon" on-reorder="moveItem(producto, $fromIndex, $toIndex)"></ion-reorder-button>
                 </ion-item>
 
