@@ -1,39 +1,26 @@
-<html ng-app="ionicApp">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>ListadoCesta</title>
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/listadoCesta.css" rel="stylesheet">
-</head>
-
-
-<body ng-controller="ListadoCestaCtrl">
-
-    <ion-side-menus>
-        <!-- Center content -->
-        <ion-side-menu-content>
-            <ion-header-bar class="bar-positive">
-                <div class="buttons">
-                    <!--para hacer delete  ng-click="data.showDelete = !data.showDelete; data.showReorder = false"-->
-                    <button class="button button-icon icon ion-navicon-round" ng-click="toggleLeft();data.showReorder = false"></button>
-                </div>
-                <h1 class="title">Ionic opciones</h1>
-                <div class="buttons">
-            <button class="button" ng-click="data.showDelete = false; data.showReorder = !data.showReorder">
-                Ordenar
-            </button>
-        </div>
-            </ion-header-bar>
-              <ion-content>
+<ion-side-menus>
+    <!-- Center content -->
+    <ion-side-menu-content>
+        <ion-header-bar class="bar-positive">
+            <div class="buttons">
+                <!--para hacer delete  ng-click="data.showDelete = !data.showDelete; data.showReorder = false"-->
+                <button class="button button-icon icon ion-navicon-round" ng-click="toggleLeft();data.showReorder = false"></button>
+            </div>
+            <h1 class="title">Ionic opciones</h1>
+            <div class="buttons">
+                <button class="button" ng-click="data.showDelete = false; data.showReorder = !data.showReorder">
+                    Ordenar
+                </button>
+            </div>
+        </ion-header-bar>
+        <ion-content>
 
             <!-- The list directive is great, but be sure to also checkout the collection repeat directive when scrolling through large lists -->
 
             <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
 
                 <ion-item ng-repeat="producto in productos" producto="poducto" href="#/listadoCesta/{{producto.id}}" class="item-remove-animate">
-                    {{ producto.name }}
+                    <button  class="button button-clear button-dark" ng-click="show(producto)">{{ producto.name }}</button>
                     <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(producto)">
                     </ion-delete-button>
                     <ion-option-button class="button-assertive" ng-click="edit(producto)">
@@ -46,22 +33,18 @@
                 </ion-item>
 
             </ion-list>
-          </ion-content>    
+        </ion-content>
 
-        </ion-side-menu-content>
+    </ion-side-menu-content>
 
-        <!-- Left menu -->
-        <ion-side-menu side="left">
-            <ion-list>
-                <ion-item>Home</ion-item>
-            </ion-list>
-        </ion-side-menu>
+    <!-- Left menu -->
+    <ion-side-menu side="left">
+        <ion-list>
+            <ion-item>Home</ion-item>
+        </ion-list>
+    </ion-side-menu>
 
-        <!-- Right menu -->
-        <ion-side-menu side="right">
-        </ion-side-menu>
-    </ion-side-menus>
-
-</body>
-
-</html>
+    <!-- Right menu -->
+    <ion-side-menu side="right">
+    </ion-side-menu>
+</ion-side-menus>
