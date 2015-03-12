@@ -24,10 +24,6 @@ angular.module('starter.controllers', [])
         showDelete: false
     };
 
-    //compartir
-    $scope.share = function(producto) {
-        alert('Share producto: ' + producto.id);
-    };
     //mover
 
     $scope.moveItem = function(producto, fromIndex, toIndex) {
