@@ -17,7 +17,9 @@ angular.module('starter.controllers', [])
     $scope.data = {
         showDelete: false
     };
+  
 
+   
     //mover
 
     $scope.moveItem = function(producto, fromIndex, toIndex) {
