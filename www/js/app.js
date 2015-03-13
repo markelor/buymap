@@ -73,7 +73,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
  .state('tab.registro', {
     url: '/registro',
     views: {
-      'misListas': {
+      'registro': {
         templateUrl: 'templates/registro2.html',
         controller: 'RegistroCtrl'
       }
@@ -83,7 +83,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
  .state('tab.login', {
     url: '/login',
     views: {
-      'misListas': {
+      'login': {
         templateUrl: 'templates/login.html',
         controller: 'LoginCtrl'
       }
@@ -91,5 +91,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
   });
 
   // ir a esta ruta por defecto
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/tab/login');
 });
