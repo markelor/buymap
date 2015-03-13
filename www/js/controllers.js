@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['starter.db'])
 
 //mislistas controller
 .controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $timeout, $location, $ionicModal, Productos) {
@@ -171,10 +171,16 @@ angular.module('starter.controllers', [])
 })
 
 //Loginaren controllera
-.controller('LoginCtrl', function($scope) {})
+.controller('LoginCtrl', function($scope) {
+    console.log('LoginCtrl');
+})
 //registroaren controllera
-.controller('RegistroCtrl', function($scope) {
+.controller('RegistroCtrl', function($scope, Registro) {
+    console.log('RegistroCtrl');
 
+    $scope.guardar = function() {
+        Registro.guardar($scope.username,$scope.password,$scope.email);
+    };
 
 
 })

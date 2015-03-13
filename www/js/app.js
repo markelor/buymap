@@ -30,7 +30,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db'])
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: "/tab",
     abstract: true,
     templateUrl: "templates/tabs.html"
@@ -63,16 +63,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db'])
  .state('tab.registro', {
     url: '/registro',
     views: {
-      'tab-dash': {
+      'misListas': {
         templateUrl: 'templates/registro2.html',
         controller: 'RegistroCtrl'
       }
     }
   })
+
  .state('tab.login', {
     url: '/login',
     views: {
-      'tab-dash': {
+      'misListas': {
         templateUrl: 'templates/login.html',
         controller: 'LoginCtrl'
       }
@@ -80,5 +81,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db'])
   });
 
   // ir a esta ruta por defecto
-  $urlRouterProvider.otherwise('/tab/login');
+  $urlRouterProvider.otherwise('/login');
 });
