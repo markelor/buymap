@@ -1,8 +1,7 @@
 angular.module('starter.controllers', [])
 
-
 //mislistas controller
-.controller('MisListasCtrl', function($scope,$routeParams, $ionicSideMenuDelegate, $ionicActionSheet, $ionicPopup, $timeout, $location, Productos) {
+.controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $ionicPopup, $timeout, $location, Productos) {
 
     /* $ionicModal.fromTemplateUrl('misListas.html', {
         scope: $scope,
@@ -217,10 +216,6 @@ angular.module('starter.controllers', [])
         alert('Example of infowindow with ng-click');
     };*/
 
-<<<<<<< HEAD
-});
-
-=======
 })
 
 //Loginaren controllera
@@ -231,4 +226,3 @@ angular.module('starter.controllers', [])
 
 
     });
->>>>>>> 1d6d9d72b944a8b38151d16c5728fef7ce49a520
