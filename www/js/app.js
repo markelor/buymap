@@ -23,10 +23,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
   //obtener datos ajax
  
   AJAX.cargarDatos(function(datos){
-    console.log(datos);
+    
+    Db.addAllProductos(datos);
   });
 
 
+
+  Db.getAllProductos(function(productos){
+
+        console.log(productos);
+
+  });
 
 })
 
@@ -39,7 +46,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
   $stateProvider
 
   // setup an abstract state for the tabs directive
-  .state('tab', {
+    .state('tab', {
     url: "/tab",
     abstract: true,
     templateUrl: "templates/tabs.html"
@@ -73,17 +80,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
  .state('tab.registro', {
     url: '/registro',
     views: {
-      'registro': {
+      'tab-dash': {
         templateUrl: 'templates/registro2.html',
         controller: 'RegistroCtrl'
       }
     }
   })
-
  .state('tab.login', {
     url: '/login',
     views: {
-      'login': {
+      'tab-login': {
         templateUrl: 'templates/login.html',
         controller: 'LoginCtrl'
       }

@@ -1,7 +1,16 @@
 {
-    "id": 1,
-    "name": "A green door",
-    "price": 12.50,
-    "tags": ["home", "green"]
+    "_id": "1",
+    "name": "Tomates",
+    "price": "12.50",
+    "_id": "2",
+    "name": "Lechugas",
+    "price": "15.50",
+    "_id": "3",
+    "name": "Patatas",
+    "price": "30.50",
+     "_id": "4",
+    "name": "Zanahorias",
+    "price": "0.50"
+
 }
 
