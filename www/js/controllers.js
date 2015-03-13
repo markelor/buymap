@@ -1,7 +1,7 @@
 angular.module('starter.controllers', ['starter.db'])
 
 //mislistas controller
-.controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $ionicPopup, $timeout, $location,Db, Productos) {
+.controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $ionicPopup, $timeout, $location, Db, Productos) {
 
     var myPopup;
 
@@ -109,16 +109,16 @@ angular.module('starter.controllers', ['starter.db'])
     //mostrar productos que estan en DB
     $scope.getProductosDb = function() {
         console.log("aaaa");
-       
-       Db.getAllProductos(function(datos){
+
+        Db.getAllProductos(function(datos) {
             console.log("hemen");
-         console.log(datos);
+            console.log(datos);
 
-         $scope.productos = datos;
+            $scope.productos = datos;
 
-       });
+        });
 
-        
+
     };
 })
 
