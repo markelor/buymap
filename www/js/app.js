@@ -31,7 +31,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
 
   Db.getAllProductos(function(productos){
 
-        console.log(productos);
+       // console.log(productos);
 
   });
 

@@ -10,17 +10,23 @@ angular.module('starter.db', [])
             success(data);
         });
     };
-    var addAllProductos = function(success) { 
-      
-        localDB.put(success).then(function(result) {
+    var addAllProductos = function(data) {
+        console.log(data);
+        
+        var insertarDb = function(producto) {
+            localDB.put(producto).then(function(result) {
 
-            //console.log(result);
-  // handle response
-            }).catch(function (err) {
-             console.log(err);
-        });
+                //console.log(result);
+                // handle response
+            }).catch(function(err) {
+                console.log(err);
+            });
 
+        };
 
+        for (var i = 0; i < data.length; i++) {
+            insertarDb(data[i]);
+        }
 
     };
 
