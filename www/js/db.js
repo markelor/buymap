@@ -6,12 +6,18 @@ angular.module('starter.db', [])
 
 
     var getAllProductos = function(success) {
-        localDB.get().then(function(data) {
-            success(data);
+        console.log("bbb");
+        localDB.allDocs({
+          include_docs: true
+        }).then(function(data) {
+            var datos = [];
+            for (var i = 0; i < data.rows.length; i++) {
+                datos.push(data.rows[i].doc);
+            }
+            success(datos);
         });
     };
     var addAllProductos = function(data) {
-        console.log(data);
         
         var insertarDb = function(producto) {
             localDB.put(producto).then(function(result) {

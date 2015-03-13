@@ -1,7 +1,7 @@
 angular.module('starter.controllers', ['starter.db'])
 
 //mislistas controller
-.controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $ionicPopup, $timeout, $location, Productos) {
+.controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $ionicPopup, $timeout, $location,Db, Productos) {
 
     var myPopup;
 
@@ -67,8 +67,6 @@ angular.module('starter.controllers', ['starter.db'])
     // Al hacer click, ver menu para editar, borrar, modificar...
     $scope.show = function(producto) {
 
-        console.log(producto);
-
         // ver tab
         var hideSheet = $ionicActionSheet.show({
             buttons: [{
@@ -107,6 +105,20 @@ angular.module('starter.controllers', ['starter.db'])
             hideSheet();
         }, 10000);
 
+    };
+    //mostrar productos que estan en DB
+    $scope.getProductosDb = function() {
+        console.log("aaaa");
+       
+       Db.getAllProductos(function(datos){
+            console.log("hemen");
+         console.log(datos);
+
+         $scope.productos = datos;
+
+       });
+
+        
     };
 })
 
