@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.db'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starter.ajax'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, AJAX, Db) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +19,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db'])
       StatusBar.styleDefault();
     }
   });
+
+  //obtener datos ajax
+ 
+  AJAX.cargarDatos(function(datos){
+    console.log(datos);
+  });
+
+
+
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -43,7 +52,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db'])
     views: {
       'misListas': {
         templateUrl: 'templates/misListas.html',
-        controller: 'MisListasCtrl'
+        controller: 'MisListasCtrl',
+         css: 'css/misListas.css'
       }
     }
   })
@@ -73,7 +83,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db'])
  .state('tab.login', {
     url: '/login',
     views: {
+<<<<<<< HEAD
       'misListas': {
+=======
+      'tab-login': {
+>>>>>>> db3ef6a2a1c3f074f0d76cdb2fcec905c15a7b0b
         templateUrl: 'templates/login.html',
         controller: 'LoginCtrl'
       }

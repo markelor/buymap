@@ -1,14 +1,16 @@
 angular.module('starter.controllers', ['starter.db'])
 
-//mislistas controller
-.controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $timeout, $location, $ionicModal, Productos) {
 
-    $ionicModal.fromTemplateUrl('my-modal.html', {
+//mislistas controller
+.controller('MisListasCtrl', function($scope,$routeParams, $ionicSideMenuDelegate, $ionicActionSheet, $ionicPopup, $timeout, $location, Productos) {
+
+    /* $ionicModal.fromTemplateUrl('misListas.html', {
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function(modal) {
         $scope.modal = modal;
     });
+*/
 
     $scope.toggleLeft = function() {
         $ionicSideMenuDelegate.toggleLeft();
@@ -26,6 +28,51 @@ angular.module('starter.controllers', ['starter.db'])
     };
     //ver productos
     $scope.productos = Productos.all();
+    // Crear el popup para editar y añadir
+    $scope.showPopup = function() {
+        console.log("aaa");
+        $scope.data = {};
+
+        // El popup
+        var myPopup = $ionicPopup.show({
+            template: '<input type="text" ng-model="data.nombreProducto">',
+            title: 'Escribe el nuevo nombre',
+            scope: $scope,
+            buttons: [{
+                text: 'Cancelar'
+            }, {
+                text: '<b>Guardar</b>',
+                type: 'button-positive',
+                onTap: function(e) {
+                    if (!$scope.data.nombreProducto) {
+        
+                        e.preventDefault();
+                    } else {
+                        return $scope.data.nombreProducto;
+                    }
+                }
+            }, ]
+        });
+        myPopup.then(function(res) {
+        });
+        $timeout(function() {
+            myPopup.close(); //cerrar el popup despues de 20 segundos
+        }, 20000);
+    };
+    // Popup de comfirmacion para eliminar producto
+    $scope.showConfirm = function() {
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Eliminar producto',
+            template: '¿Quiere eliminar este producto de la lista?'
+        });
+        confirmPopup.then(function(res) {
+            if (res) {
+                console.log('Estas seguro');
+            } else {
+                console.log('Estas seguro');
+            }
+        });
+    };
 
     // Al hacer click, ver menu para editar, borrar, modificar...
     $scope.show = function(producto) {
@@ -44,21 +91,23 @@ angular.module('starter.controllers', ['starter.db'])
             cancel: function() {
                 // add cancel code..
             },
-            buttonClicked: function(index) {
+            buttonClicked: function(index,$routeParams) {
 
                 //editar
-                if (index === 1) {
-                    console.log(index);
-                    $scope.modal.show();
+                if (index === 1) { 
+                    $scope.showPopup();
+                    //$scope.producto = $scope.productos[$routeParams.id];
+                    //console.log($scope.producto);
                     //obtenemos el usuario a editar con routeParams
-                    /* $scope.textButton = "Editar usuario";
-                     $scope.usuario = $scope.usuarios[$routeParams.id];
+                    // $scope.textButton = "Editar usuario";
+                     /*$scope.producto = $scope.productos[$routeParams.id];
                      $scope.editUser = function() {
                          //actualizamos la información del usuario con la id que lleva $routeParams
                          $scope.usuarios[$routeParams.id] = $scope.usuario;
                          $location.url("/");
-                     };
-                     */
+
+                     };*/
+                     
 
                 } else {
                     //añadir
@@ -95,7 +144,7 @@ angular.module('starter.controllers', ['starter.db'])
     };
     $scope.init = function() {
 
-      navigator.geolocation.getCurrentPosition(function(pos) {
+        navigator.geolocation.getCurrentPosition(function(pos) {
 
             $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
             //$scope.loading.hide();
@@ -105,7 +154,7 @@ angular.module('starter.controllers', ['starter.db'])
         });
         //function initialize() {
         var myLatlng = new google.maps.LatLng(43.07493, -89.381388);
-       // var myLatlng=new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude
+        // var myLatlng=new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude
 
         var mapOptions = {
             center: myLatlng,
@@ -115,7 +164,7 @@ angular.module('starter.controllers', ['starter.db'])
 
         var map = new google.maps.Map(document.getElementById("map"),
             mapOptions);
-         var marker = new google.maps.Marker({
+        var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
             title: 'Ubicación actual'
@@ -130,11 +179,11 @@ angular.module('starter.controllers', ['starter.db'])
             content: compiled[0]
         });
 
-       /* var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: 'Uluru (Ayers Rock)'
-        });*/
+        /* var marker = new google.maps.Marker({
+             position: myLatlng,
+             map: map,
+             title: 'Uluru (Ayers Rock)'
+         });*/
 
 
 
@@ -160,7 +209,7 @@ angular.module('starter.controllers', ['starter.db'])
         });*/
 
 
-        
+
 
     };
 
@@ -168,21 +217,30 @@ angular.module('starter.controllers', ['starter.db'])
         alert('Example of infowindow with ng-click');
     };*/
 
+<<<<<<< HEAD
+});
+
+=======
 })
 
 //Loginaren controllera
+<<<<<<< HEAD
 .controller('LoginCtrl', function($scope) {
     console.log('LoginCtrl');
 })
 //registroaren controllera
 .controller('RegistroCtrl', function($scope, Registro) {
     console.log('RegistroCtrl');
+=======
+.controller('LoginCtrl', function($scope) {})
+    //registroaren controllera
+    .controller('RegistroCtrl', function($scope) {
+>>>>>>> db3ef6a2a1c3f074f0d76cdb2fcec905c15a7b0b
 
     $scope.guardar = function() {
         Registro.guardar($scope.username,$scope.password,$scope.email);
     };
 
 
-})
-;
-
+    });
+>>>>>>> 1d6d9d72b944a8b38151d16c5728fef7ce49a520

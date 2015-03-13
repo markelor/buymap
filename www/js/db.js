@@ -1,4 +1,5 @@
 angular.module('starter.db', [])
+<<<<<<< HEAD
     .factory('Db', function() {
         var localDB = new PouchDB("buymap");
 
@@ -15,8 +16,22 @@ angular.module('starter.db', [])
 
 
             });
+=======
 
+.factory('Db', function() {
+    var localDB = new PouchDB("buymap");
+>>>>>>> db3ef6a2a1c3f074f0d76cdb2fcec905c15a7b0b
 
+    var getAllProductos = function(success) {
+        localDB.get().then(function(data){
+            success(data);
+        });
+    };
+    var addAllProductos = function(success) {
+       //añadir 
+    };
+
+<<<<<<< HEAD
             return {
 
                 getAllProductos: getAllProductos()
@@ -29,6 +44,14 @@ angular.module('starter.db', [])
 
 
     })
+=======
+    return {
+        getAllProductos: getAllProductos,
+        addAllProductos: addAllProductos
+    };
+
+})
+>>>>>>> db3ef6a2a1c3f074f0d76cdb2fcec905c15a7b0b
 
 
 
@@ -117,6 +140,7 @@ angular.module('starter.db', [])
             return productos[productoId];
         }
     };
+<<<<<<< HEAD
 })
 
 .factory('Registro', function() {
@@ -168,4 +192,6 @@ angular.module('starter.db', [])
     return {
         cargar: cargar
     };
+=======
+>>>>>>> db3ef6a2a1c3f074f0d76cdb2fcec905c15a7b0b
 });
