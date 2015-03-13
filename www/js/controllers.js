@@ -217,10 +217,9 @@ angular.module('starter.controllers', [])
         alert('Example of infowindow with ng-click');
     };*/
 
-<<<<<<< HEAD
-});
 
-=======
+
+
 })
 
 //Loginaren controllera
@@ -231,4 +230,4 @@ angular.module('starter.controllers', [])
 
 
     });
->>>>>>> 1d6d9d72b944a8b38151d16c5728fef7ce49a520
+
