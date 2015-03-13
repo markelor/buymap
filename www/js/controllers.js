@@ -3,13 +3,7 @@ angular.module('starter.controllers', ['starter.db'])
 //mislistas controller
 .controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $ionicPopup, $timeout, $location, Productos) {
 
-    /* $ionicModal.fromTemplateUrl('misListas.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.modal = modal;
-    });
-*/
+    var myPopup;
 
     $scope.toggleLeft = function() {
         $ionicSideMenuDelegate.toggleLeft();
@@ -28,13 +22,14 @@ angular.module('starter.controllers', ['starter.db'])
     //ver productos
     $scope.productos = Productos.all();
     // Crear el popup para editar y añadir
-    $scope.showPopup = function() {
+    $scope.showPopup = function(producto) {
         console.log("aaa");
-        $scope.data = {};
+        // Crear una copia del producto
+        $scope.producto = Object.create(producto);
 
         // El popup
-        var myPopup = $ionicPopup.show({
-            template: '<input type="text" ng-model="data.nombreProducto">',
+        myPopup = $ionicPopup.show({
+            template: '<input type="text" ng-model="producto.name">',
             title: 'Escribe el nuevo nombre',
             scope: $scope,
             buttons: [{
@@ -43,16 +38,13 @@ angular.module('starter.controllers', ['starter.db'])
                 text: '<b>Guardar</b>',
                 type: 'button-positive',
                 onTap: function(e) {
-                    if (!$scope.data.nombreProducto) {
-
-                        e.preventDefault();
-                    } else {
-                        return $scope.data.nombreProducto;
-                    }
+                    producto.name = $scope.producto.name;
                 }
-            }, ]
+            }]
         });
-        myPopup.then(function(res) {});
+        myPopup.then(function(res) {
+            console.log(res);
+        });
         $timeout(function() {
             myPopup.close(); //cerrar el popup despues de 20 segundos
         }, 20000);
@@ -75,6 +67,8 @@ angular.module('starter.controllers', ['starter.db'])
     // Al hacer click, ver menu para editar, borrar, modificar...
     $scope.show = function(producto) {
 
+        console.log(producto);
+
         // ver tab
         var hideSheet = $ionicActionSheet.show({
             buttons: [{
@@ -89,32 +83,15 @@ angular.module('starter.controllers', ['starter.db'])
             cancel: function() {
                 // add cancel code..
             },
-            buttonClicked: function(index, $routeParams) {
-
+            buttonClicked: function(index) {
+                hideSheet();
                 //editar
                 if (index === 1) {
-                    $scope.showPopup();
-                    //$scope.producto = $scope.productos[$routeParams.id];
-                    //console.log($scope.producto);
-                    //obtenemos el usuario a editar con routeParams
-                    // $scope.textButton = "Editar usuario";
-                    /*$scope.producto = $scope.productos[$routeParams.id];
-                    $scope.editUser = function() {
-                        //actualizamos la información del usuario con la id que lleva $routeParams
-                        $scope.usuarios[$routeParams.id] = $scope.usuario;
-                        $location.url("/");
-
-                    };*/
-
+                    $scope.showPopup(producto);
 
                 } else {
-                    //añadir
-                    /*$scope.textButton = "Añadir un nuevo usuario";
-    $scope.usuario = {};
-    $scope.newUser = function(){
-        $scope.usuarios.push($scope.usuario);
-        $location.url("/");
-        */
+                    //añadir un producto
+
                 }
             },
             destructiveButtonClicked: function(index) {
@@ -177,14 +154,6 @@ angular.module('starter.controllers', ['starter.db'])
             content: compiled[0]
         });
 
-        /* var marker = new google.maps.Marker({
-             position: myLatlng,
-             map: map,
-             title: 'Uluru (Ayers Rock)'
-         });*/
-
-
-
         google.maps.event.addListener(marker, 'click', function() {
             infowindow.open(map, marker);
         });
@@ -200,20 +169,7 @@ angular.module('starter.controllers', ['starter.db'])
             return;
         }
 
-
-        /*$scope.loading = $ionicLoading.show({
-          content: 'Getting current location...',
-          showBackdrop: false
-        });*/
-
-
-
-
     };
-
-    /*$scope.clickTest = function() {
-        alert('Example of infowindow with ng-click');
-    };*/
 
 })
 
@@ -232,4 +188,3 @@ angular.module('starter.controllers', ['starter.db'])
 
 
 });
-
