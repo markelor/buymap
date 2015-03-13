@@ -8,9 +8,13 @@ angular.module('starter.db', [])
             success(data);
         });
     };
+    var addAllProductos = function(success) {
+       //añadir 
+    };
 
     return {
-        getAllProductos: getAllProductos
+        getAllProductos: getAllProductos,
+        addAllProductos: addAllProductos
     };
 
 })
