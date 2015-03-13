@@ -39,7 +39,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: "/tab",
     abstract: true,
     templateUrl: "templates/tabs.html"
@@ -73,16 +73,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
  .state('tab.registro', {
     url: '/registro',
     views: {
-      'tab-dash': {
+      'registro': {
         templateUrl: 'templates/registro2.html',
         controller: 'RegistroCtrl'
       }
     }
   })
+
  .state('tab.login', {
     url: '/login',
     views: {
-      'tab-login': {
+      'login': {
         templateUrl: 'templates/login.html',
         controller: 'LoginCtrl'
       }

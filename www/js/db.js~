@@ -1,26 +1,34 @@
 angular.module('starter.db', [])
-
-
 .factory('Db', function() {
-    var localDB = new PouchDB("buymap");
+var localDB = new PouchDB("buymap");
 
 
-    var getAllProductos = function(success) {
-        localDB.get().then(function(data){
-            success(data);
-        });
-    };
-    var addAllProductos = function(success) {
-       //añadir 
-    };
-      
+
+ var getAllProductos = function (succes){
+
+
+    $.getJSON("../server/productos.json",{}, function(productos){
+
+
+        console.log(productos);
+
+
+
+    });
+
+
     return {
-        getAllProductos: getAllProductos,
-        addAllProductos: addAllProductos
+
+         getAllProductos:getAllProductos()
     };
+
+
+ };
+
+        
+
 
 })
-
 
 
 
@@ -99,8 +107,8 @@ angular.module('starter.db', [])
         face: 'https://pbs.twimg.com/profile_images/491995398135767040/ie2Z_V6e.jpeg'
     }];
 
-    //cambiar las funciones necesarias para establecimientos 
-    return {
+   //cambiar las funciones necesarias para establecimientos 
+  return {
         all: function() {
             return productos;
         },
@@ -109,62 +117,24 @@ angular.module('starter.db', [])
             return productos[productoId];
         }
     };
-
-    /*
-
-<<<<<<< HEAD
-})
+});
 
 .factory('Registro', function() {
     // Might use a resource here that returns a JSON array
 
     // Some fake testing data
-
-    var db = new PouchDB('dbname');
-    var guardar = function(username, password, email) {
-
-        var user = {
-            '_id': username,
-            'password': password,
-            'email': email
+    
+	
 
 
-        };
-
-        db.put(user).then(function(result) {
-            // handle result
-            console.log(result);
-        }).catch(function(err) {
-            console.log(err);
-        });
-
+   //cambiar las funciones necesarias para establecimientos 
+  return {
+        all: function() {
+            return productos;
+        },
+        get: function(productoId) {
+            // Simple index lookup
+            return productos[productoId];
+        }
     };
-
-    var cargar = function(username, password) {
-
-        var user=username;
-        var pas=password;
-        
-
-        //hemen ide bidez bilatzen dugu
-        db.get('user').then(function(doc) {
-            // handle doc
-            if (doc._id === user && doc.password===pas) {
-                console.log('ondo');
-            }
-         
-        }).catch(function(err) {
-            console.log(err);
-        });
-
-    };
-
-
-    //cambiar las funciones necesarias para establecimientos 
-    return {
-        cargar: cargar
-    };
-=======
->>>>>>> db3ef6a2a1c3f074f0d76cdb2fcec905c15a7b0b
-*/
 });

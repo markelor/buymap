@@ -1,8 +1,7 @@
-angular.module('starter.controllers', [])
-
+angular.module('starter.controllers', ['starter.db'])
 
 //mislistas controller
-.controller('MisListasCtrl', function($scope,$routeParams, $ionicSideMenuDelegate, $ionicActionSheet, $ionicPopup, $timeout, $location, Productos) {
+.controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $ionicPopup, $timeout, $location, Productos) {
 
     /* $ionicModal.fromTemplateUrl('misListas.html', {
         scope: $scope,
@@ -45,7 +44,7 @@ angular.module('starter.controllers', [])
                 type: 'button-positive',
                 onTap: function(e) {
                     if (!$scope.data.nombreProducto) {
-        
+
                         e.preventDefault();
                     } else {
                         return $scope.data.nombreProducto;
@@ -53,8 +52,7 @@ angular.module('starter.controllers', [])
                 }
             }, ]
         });
-        myPopup.then(function(res) {
-        });
+        myPopup.then(function(res) {});
         $timeout(function() {
             myPopup.close(); //cerrar el popup despues de 20 segundos
         }, 20000);
@@ -91,23 +89,23 @@ angular.module('starter.controllers', [])
             cancel: function() {
                 // add cancel code..
             },
-            buttonClicked: function(index,$routeParams) {
+            buttonClicked: function(index, $routeParams) {
 
                 //editar
-                if (index === 1) { 
+                if (index === 1) {
                     $scope.showPopup();
                     //$scope.producto = $scope.productos[$routeParams.id];
                     //console.log($scope.producto);
                     //obtenemos el usuario a editar con routeParams
                     // $scope.textButton = "Editar usuario";
-                     /*$scope.producto = $scope.productos[$routeParams.id];
-                     $scope.editUser = function() {
-                         //actualizamos la información del usuario con la id que lleva $routeParams
-                         $scope.usuarios[$routeParams.id] = $scope.usuario;
-                         $location.url("/");
+                    /*$scope.producto = $scope.productos[$routeParams.id];
+                    $scope.editUser = function() {
+                        //actualizamos la información del usuario con la id que lleva $routeParams
+                        $scope.usuarios[$routeParams.id] = $scope.usuario;
+                        $location.url("/");
 
-                     };*/
-                     
+                    };*/
+
 
                 } else {
                     //añadir
@@ -217,17 +215,21 @@ angular.module('starter.controllers', [])
         alert('Example of infowindow with ng-click');
     };*/
 
-
-
-
 })
 
 //Loginaren controllera
-.controller('LoginCtrl', function($scope) {})
-    //registroaren controllera
-    .controller('RegistroCtrl', function($scope) {
+
+.controller('LoginCtrl', function($scope) {
+    console.log('LoginCtrl');
+})
+
+.controller('RegistroCtrl', function($scope) {
 
 
+    $scope.guardar = function() {
+        Registro.guardar($scope.username, $scope.password, $scope.email);
+    };
 
-    });
+
+});
 
