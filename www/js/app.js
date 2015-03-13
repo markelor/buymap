@@ -47,7 +47,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
     views: {
       'misListas': {
         templateUrl: 'templates/misListas.html',
-        controller: 'MisListasCtrl'
+        controller: 'MisListasCtrl',
+         css: 'css/misListas.css'
       }
     }
   })
