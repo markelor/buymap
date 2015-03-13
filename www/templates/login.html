@@ -3,17 +3,17 @@
         <div class="list">
             <label class="item item-input">
                 <span class="input-label">Username</span>
-                <input type="text">
+                <input type="text" ng-model="user.username">
             </label>
             <label class="item item-input">
                 <span class="input-label">Password</span>
-                <input type="password">
+                <input type="password" ng-model="user.password">
             </label>
 
-            <button class="button button-positive">
+            <button class="button button-positive" ng-model="kargatu" ng-click="cargar(user)">
                 Sartu
             </button>
-            <a href="#/tab/registro">Registratu zaitez</a>
+            <a href="#/registro">Registratu zaitez</a>
         </div>
     </ion-content>
 </ion-view>
