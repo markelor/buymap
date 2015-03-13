@@ -21,7 +21,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
   });
 
   //obtener datos ajax
-  console.log(AJAX.cargarDatos());
+  //console.log(AJAX.cargarDatos());
 
 })
 
