@@ -6,9 +6,15 @@ angular.module('starter.ajax', [])
 			success(json);
 		});
 	};
+	var cargarUsuarios = function(success) {
+		$.getJSON('server/usuarios.json', {}, function(json){
+			success(json);
+		});
+	};
 
 	return {
-		cargarDatos : cargarDatos
+		cargarDatos : cargarDatos,
+		cargarUsuarios : cargarUsuarios
 	};
 })
 
