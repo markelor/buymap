@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/misListas.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -25,12 +27,13 @@
     <script src="js/ajax.js"></script>
     <!--<script src="http://maps.googleapis.com/maps/api/js?keyAIzaSyCjPpRF10664h2ACVXkXNIyadibzJgmb6M&sensor=true"></script>-->
     <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
-  </head>
-  <body ng-app="starter">
+</head>
+
+<body ng-app="starter">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
-   <!-- <ion-nav-bar class="bar-stable">
+    <!-- <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>-->
@@ -41,18 +44,18 @@
     -->
     <ion-nav-view></ion-nav-view>
 
+    <script id="my-modal.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar>
+                <h1 class="title">My Modal title</h1>
+            </ion-header-bar>
+            <ion-content>
+                Hello!
+            </ion-content>
+        </ion-modal-view>
+    </script>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="js/pouchdb-3.3.1.min.js"></script>
+</body>
 
-  <script id="my-modal.html" type="text/ng-template">
-  <ion-modal-view>
-    <ion-header-bar>
-      <h1 class="title">My Modal title</h1>
-    </ion-header-bar>
-    <ion-content>
-      Hello!
-    </ion-content>
-  </ion-modal-view>
-</script>
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="js/pouchdb-3.3.1.min.js"></script>
-  </body>
 </html>
