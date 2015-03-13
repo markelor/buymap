@@ -1,26 +1,9 @@
 angular.module('starter.db', [])
-<<<<<<< HEAD
-    .factory('Db', function() {
-        var localDB = new PouchDB("buymap");
 
-
-
-        var getAllProductos = function(succes) {
-
-
-            $.getJSON("../server/productos.json", {}, function(productos) {
-
-
-                console.log(productos);
-
-
-
-            });
-=======
 
 .factory('Db', function() {
     var localDB = new PouchDB("buymap");
->>>>>>> db3ef6a2a1c3f074f0d76cdb2fcec905c15a7b0b
+
 
     var getAllProductos = function(success) {
         localDB.get().then(function(data){
@@ -30,28 +13,14 @@ angular.module('starter.db', [])
     var addAllProductos = function(success) {
        //añadir 
     };
-
-<<<<<<< HEAD
-            return {
-
-                getAllProductos: getAllProductos()
-            };
-
-
-        };
-
-
-
-
-    })
-=======
+      
     return {
         getAllProductos: getAllProductos,
         addAllProductos: addAllProductos
     };
 
 })
->>>>>>> db3ef6a2a1c3f074f0d76cdb2fcec905c15a7b0b
+
 
 
 
@@ -140,6 +109,9 @@ angular.module('starter.db', [])
             return productos[productoId];
         }
     };
+
+    /*
+
 <<<<<<< HEAD
 })
 
@@ -194,4 +166,5 @@ angular.module('starter.db', [])
     };
 =======
 >>>>>>> db3ef6a2a1c3f074f0d76cdb2fcec905c15a7b0b
+*/
 });

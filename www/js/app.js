@@ -83,11 +83,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
  .state('tab.login', {
     url: '/login',
     views: {
-<<<<<<< HEAD
       'misListas': {
-=======
-      'tab-login': {
->>>>>>> db3ef6a2a1c3f074f0d76cdb2fcec905c15a7b0b
         templateUrl: 'templates/login.html',
         controller: 'LoginCtrl'
       }
