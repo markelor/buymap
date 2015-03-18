@@ -199,4 +199,9 @@ angular.module('starter.controllers', ['starter.db'])
     };
 
 
-});
+})
+
+
+.controller('valoracionesCtrl', function($scope){
+    console.log('valoracionesCtrl');
+})

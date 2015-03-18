@@ -92,6 +92,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
             controller: 'LoginCtrl'
         })
 
+
+    .state('valoraciones',{
+        url: '/valoraciones',
+        templateUrl: 'templates/valoraciones.html',
+        controller: 'valoracionesCtrl'
+    })
+
     // ir a esta ruta por defecto
     $urlRouterProvider.otherwise('/login');
 });
