@@ -4,47 +4,47 @@
         "location": "0,0",
         "type": "general"
     }, {
-        "_id": 0,
+        "_id": 1,
         "name": "Autoservicio Mikel",
         "location": "0,0",
         "type": "general"
     }, {
-        "_id": 0,
+        "_id": 2,
         "name": "Fruteria Maite",
         "location": "0,0",
         "type": "fruteria"
     }, {
-        "_id": 0,
+        "_id": 3,
         "name": "Panadería Olazabal",
         "location": "0,0",
         "type": "panaderia"
     }, {
-        "_id": 0,
+        "_id": 4,
         "name": "Pescadería Pasaia",
         "location": "0,0",
         "type": "pescaderia"
     }, {
-        "_id": 0,
+        "_id": 5,
         "name": "Super Adarra",
         "location": "0,0",
         "type": "general"
     },{
-        "_id": 0,
-        "name": "Carnicería Mikel",
+        "_id": 6,
+        "name": "Carnicería Gabilondo",
         "location": "0,0",
         "type": "carniceria"
     },{
-        "_id": 0,
+        "_id": 7,
         "name": "Super Aitor",
         "location": "0,0",
         "type": "general"
     },{
-        "_id": 0,
-        "name": "Frutas y verduras Xabi",
+        "_id": 8,
+        "name": "Frutas y Verduras Xabi",
         "location": "0,0",
         "type": "fruteria"
     },{
-        "_id": 0,
+        "_id": 9,
         "name": "Pescadería Amaia",
         "location": "0,0",
         "type": "pescaderia"
