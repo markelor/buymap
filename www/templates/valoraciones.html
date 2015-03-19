@@ -1,26 +1,20 @@
-<div class="bar bar-header bar-positive">
-    <h1>Valoraciones</h1>
-</div>
+<ion-header-bar class="bar-positive">
+    <h1 class="title">Valoraciones</h1>
+</ion-header-bar>
 
 <ion-content>
-    <div class="card">
+
+
+    <div class="card" ng-repeat="valoracion in valoraciones">
+    	<div class="item item-divider row">
+    		<span class="col">Usuario {{valoracion.userid}}</span>
+    		<span class="col">Comercio: {{valoracion.storeid}}</span>
+    		<span class="col">Puntuación: {{valoracion.stars}}</span>
+    	</div>
         <div class="item item-text-wrap">
-            <p> Esto es una prueba de una valoración </p>
+            <p> {{valoracion.comment}} </p>
         </div>
     </div>
-    <div class="card">
-        <div class="item item-text-wrap">
-            <p> Esto es una prueba de una valoración </p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="item item-text-wrap">
-            <p> Esto es una prueba de una valoración </p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="item item-text-wrap">
-            <p> Esto es una prueba de una valoración </p>
-        </div>
-    </div>
+
+   
 </ion-content>

@@ -31,7 +31,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
 
 
 
-    //Db.getAllProductos(function(productos) {
+   //Db.getAllProductos(function(productos) {
 
         // console.log(productos);
 
@@ -77,6 +77,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
         }
     })
 
+    .state('tab.valoraciones', {
+        url: '/valoraciones',
+        views: {
+            'valoraciones': {
+                templateUrl: 'templates/valoraciones.html',
+                controller: 'valoracionesCtrl'
+            }
+        }
+    })
 
 
     .state('registro', {
@@ -93,11 +102,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
         })
 
 
-    .state('valoraciones',{
+    /*.state('valoraciones',{
         url: '/valoraciones',
         templateUrl: 'templates/valoraciones.html',
         controller: 'valoracionesCtrl'
-    })
+    })*/
 
     // ir a esta ruta por defecto
     $urlRouterProvider.otherwise('/login');

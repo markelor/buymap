@@ -1,7 +1,8 @@
 angular.module('starter.controllers', ['starter.db'])
 
 //mislistas controller
-.controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet, $ionicPopup, $timeout, $location, Db, Productos) {
+.controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet,
+    $ionicPopup, $timeout, $location, Db, Productos) {
 
     var myPopup;
 
@@ -202,6 +203,16 @@ angular.module('starter.controllers', ['starter.db'])
 })
 
 
-.controller('valoracionesCtrl', function($scope){
+.controller('valoracionesCtrl', function($scope, Db, AJAX) {
     console.log('valoracionesCtrl');
+
+    var valoraciones = null;
+
+    AJAX.cargarValoraciones(function(valoraciones) {
+        Db.addAllProductos(valoraciones);
+        console.log('cargarValoraciones: ' + JSON.stringify(valoraciones));
+        $scope.valoraciones = valoraciones;
+    });
+
+    
 })

@@ -6,7 +6,7 @@ angular.module('starter.db', [])
 
 
     var getAllProductos = function(success) {
-        console.log("bbb");
+        console.log("getAllProductos");
         localDB.allDocs({
           include_docs: true
         }).then(function(data) {
@@ -17,6 +17,22 @@ angular.module('starter.db', [])
             success(datos);
         });
     };
+
+    var getAllValoraciones = function(success){
+        console.log("getAllValoraciones");
+        localDB.allDocs({
+            include_docs: true
+        }).then(function(data){
+            var datos = [];
+            for (var i = 0;i<data.rows.length; i++) {
+                datos.push(data.rows[i].doc)    
+            };
+            success(datos);
+        });
+
+    };
+
+
     var addAllProductos = function(data) {
         
         var insertarDb = function(producto) {
@@ -27,7 +43,6 @@ angular.module('starter.db', [])
             }).catch(function(err) {
                 console.log(err);
             });
-
         };
 
         for (var i = 0; i < data.length; i++) {
@@ -38,7 +53,8 @@ angular.module('starter.db', [])
 
     return {
         getAllProductos: getAllProductos,
-        addAllProductos: addAllProductos
+        addAllProductos: addAllProductos,
+        getAllValoraciones: getAllValoraciones
     };
 
 })
