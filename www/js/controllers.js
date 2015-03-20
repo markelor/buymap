@@ -20,8 +20,7 @@ angular.module('starter.controllers', ['starter.db'])
         $scope.productos.splice(fromIndex, 1);
         $scope.productos.splice(toIndex, 0, producto);
     };
-    //ver productos
-    $scope.productos = Productos.all();
+
     // Crear el popup para editar y añadir
     $scope.showPopup = function(producto) {
         console.log("aaa");
@@ -107,6 +106,9 @@ angular.module('starter.controllers', ['starter.db'])
         }, 10000);
 
     };
+
+    $scope.productos = [];
+
     //mostrar productos que estan en DB
     $scope.getProductosDb = function() {
         console.log("aaaa");
@@ -114,7 +116,6 @@ angular.module('starter.controllers', ['starter.db'])
         Db.getAllProductos(function(datos) {
             console.log("hemen");
             console.log(datos);
-
             $scope.productos = datos;
 
         });
