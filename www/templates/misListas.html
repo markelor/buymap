@@ -1,7 +1,7 @@
-<ion-side-menus>
+<ion-side-menus ng-init ="getProductosDb()" >
     <!-- Center content -->
     <ion-side-menu-content>
-        <ion-header-bar class="bar-positive" ng-init ="getProductosDb()" >
+        <ion-header-bar class="bar-positive" >
             <div class="buttons">
                 <button class="button button-icon icon ion-navicon-round" ng-click="toggleLeft()"></button>
             </div>

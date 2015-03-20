@@ -25,8 +25,8 @@ angular.module('starter.db', [])
         }).then(function(data){
             var datos = [];
             for (var i = 0;i<data.rows.length; i++) {
-                datos.push(data.rows[i].doc)    
-            };
+                datos.push(data.rows[i].doc);    
+            }
             success(datos);
         });
 
@@ -62,7 +62,7 @@ angular.module('starter.db', [])
 
 
 
-.factory('Productos', function() {
+/*.factory('Productos', function() {
     // Might use a resource here that returns a JSON array
 
     // Some fake testing data
@@ -104,6 +104,7 @@ angular.module('starter.db', [])
         }
     };
 })
+*/
 
 
 .factory('Establecimientos', function() {

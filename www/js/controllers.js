@@ -2,7 +2,7 @@ angular.module('starter.controllers', ['starter.db'])
 
 //mislistas controller
 .controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet,
-    $ionicPopup, $timeout, $location, Db, Productos) {
+    $ionicPopup, $timeout, $location, Db) {
 
     var myPopup;
 
