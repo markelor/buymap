@@ -1,7 +1,8 @@
 {
     "listas": {
         "lista": [{
-            "_fecha": "20/10/2014",
+            "_id" : "1",
+            "fecha": "20/10/2014",
             "productos": [{
                 "_id": "1",
                 "name": "Tomates",
@@ -22,7 +23,8 @@
 
         },
         {
-            "_fecha": "04/03/2015",
+            "_id" : "2",
+            "fecha": "04/03/2015",
             "productos": [{
                 "_id": "5",
                 "name": "Mistol",
@@ -43,7 +45,8 @@
 
         },
          {
-            "_fecha": "01/02/2015",
+            "_id" : "3",
+            "fecha": "01/02/2015",
             "productos": [{
                 "_id": "5",
                 "name": "Sardinas",
