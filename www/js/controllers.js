@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['starter.db'])
+angular.module('starter.controllers', ['starter.db', 'starter.geolocation'] )
 
 //mislistas controller
 .controller('MisListasCtrl', function($scope,$ionicSideMenuDelegate, $ionicActionSheet,
@@ -165,10 +165,47 @@ angular.module('starter.controllers', ['starter.db'])
 
 
 
-.controller('RutaCtrl', function($scope, $ionicSideMenuDelegate, $ionicLoading, $compile) {
+.controller('RutaCtrl', ['$scope', '$ionicLoading', 'Geolocation', function($scope, $ionicLoading, Geolocation) {
 
-    $scope.toggleLeft = function() {
-        $ionicSideMenuDelegate.toggleLeft();
+  $scope.toggleRight = function() {
+        $ionicSideMenuDelegate.toggleRight();
+    };
+
+    Geolocation.localizar(function(coords) {
+        console.log(coords);
+
+        console.log('RutaCtrl initialize');
+        var myLatlng = new google.maps.LatLng(coords.latitude, coords.longitude);
+
+        var mapOptions = {
+            center: myLatlng,
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        console.log(document.getElementById("map"));
+
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Zona'
+        });
+
+        $scope.map = map;     
+    });
+}])
+
+
+
+
+
+
+/*.controller('RutaCtrl', function($scope, $ionicSideMenuDelegate, $ionicLoading, $compile,geolocation) {
+
+    $scope.toggleRight = function() {
+        $ionicSideMenuDelegate.toggleRight();
     };
     $scope.init = function() {
 
@@ -224,7 +261,7 @@ angular.module('starter.controllers', ['starter.db'])
 
     };
 
-})
+})*/
 
 //Loginaren controllera
 
