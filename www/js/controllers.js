@@ -1,17 +1,12 @@
 angular.module('starter.controllers', ['starter.db'])
 
 //mislistas controller
-.controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet,
+.controller('MisListasCtrl', function($scope,$ionicSideMenuDelegate, $ionicActionSheet,
     $ionicPopup, $timeout, $location, Db) {
 
-    var myPopup;
 
     $scope.toggleLeft = function() {
         $ionicSideMenuDelegate.toggleLeft();
-    };
-
-    $scope.data = {
-        showDelete: false
     };
 
     //mover
@@ -21,12 +16,10 @@ angular.module('starter.controllers', ['starter.db'])
         $scope.productos.splice(toIndex, 0, producto);
     };
 
-    // Crear el popup para editar y añadir
-    $scope.showPopup = function(producto) {
-        console.log("aaa");
+    // Crear el popup para editar 
+    $scope.showPopupEditProducto = function(producto) {
         // Crear una copia del producto
         $scope.producto = Object.create(producto);
-
         // El popup
         myPopup = $ionicPopup.show({
             template: '<input type="text" ng-model="producto.name">',
@@ -47,6 +40,51 @@ angular.module('starter.controllers', ['starter.db'])
         });
         $timeout(function() {
             myPopup.close(); //cerrar el popup despues de 20 segundos
+        }, 20000);
+    };
+    // Crear el popup para añadir ptoducto
+    $scope.showPopupAddProducto = function() {
+        // El popup
+        // Crear una copia del producto
+        $scope.producto = {};
+
+        // An elaborate, custom popup
+        var myPopup = $ionicPopup.show({
+            template: '<input type="text" ng-model="producto.name">',
+            title: 'Añadir producto',
+            scope: $scope,
+            buttons: [{
+                text: 'Cancelar'
+            }, {
+                text: '<b>Añadir</b>',
+                type: 'button-positive',
+                onTap: function(e) {
+                    if (!$scope.producto.name) {
+                        //no dejar al usuario hasta que añada un producto
+                        e.preventDefault();
+                    } else {
+                        return $scope.producto.name;
+                    }
+                }
+            }, ]
+        });
+        myPopup.then(function(res) {
+            //creamos el producto
+            
+            var id=$scope.productos.length+1;
+            id=id.toString();
+            console.log(id);
+            producto=[{
+                "_id": id,
+                "name": res,
+                "price": "12.50"
+            }];
+            $scope.productos.push($scope.producto);
+            Db.addAllProductos(producto);
+            console.log('Tapped!', res);
+        });
+        $timeout(function() {
+            myPopup.close(); //Cerrar eel popup despues de 20 segundos
         }, 20000);
     };
     // Popup de comfirmacion para eliminar producto
@@ -85,10 +123,12 @@ angular.module('starter.controllers', ['starter.db'])
                 hideSheet();
                 //editar
                 if (index === 1) {
-                    $scope.showPopup(producto);
+                    $scope.showPopupEditProducto(producto);
 
                 } else {
                     //añadir un producto
+                    $scope.showPopupAddProducto();
+
 
                 }
             },
@@ -107,21 +147,20 @@ angular.module('starter.controllers', ['starter.db'])
 
     };
 
-    $scope.productos = [];
-
+    //$scope.productos = [];
     //mostrar productos que estan en DB
     $scope.getProductosDb = function() {
-        console.log("aaaa");
 
-        Db.getAllProductos(function(datos) {
-            console.log("hemen");
-            console.log(datos);
-            $scope.productos = datos;
+        Db.getAllListas(function(datos) {
+            //console.log(datos);
+            //$scope.productos = datos;
 
         });
-
-
+        
     };
+    //$location.url("/tab/misListas");
+    //Seleccionar listas ya creadas
+
 })
 
 
@@ -210,10 +249,10 @@ angular.module('starter.controllers', ['starter.db'])
     var valoraciones = null;
 
     AJAX.cargarValoraciones(function(valoraciones) {
-        Db.addAllProductos(valoraciones);
+        Db.addAllValoraciones(valoraciones);
         console.log('cargarValoraciones: ' + JSON.stringify(valoraciones));
         $scope.valoraciones = valoraciones;
     });
 
     
-})
+});

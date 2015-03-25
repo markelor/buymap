@@ -1,17 +1,59 @@
-[{
-    "_id": "1",
-    "name": "Tomates",
-    "price": "12.50"
-}, {
-    "_id": "2",
-    "name": "Lechugas",
-    "price": "15.50"
-}, {
-    "_id": "3",
-    "name": "Patatas",
-    "price": "30.50"
-}, {
-    "_id": "4",
-    "name": "Zanahorias",
-    "price": "0.50"
-}]
+{
+    "listas": {
+        "lista": [{
+            "_fecha": "20/10/2014",
+            "productos": [{
+                "_id": "1",
+                "name": "Tomates",
+                "price": "12.50"
+            }, {
+                "_id": "2",
+                "name": "Lechugas",
+                "price": "15.50"
+            }, {
+                "_id": "3",
+                "name": "Patatas",
+                "price": "30.50"
+            }, {
+                "_id": "4",
+                "name": "Zanahorias",
+                "price": "0.50"
+            }]
+
+        },
+        {
+            "_fecha": "04/03/2015",
+            "productos": [{
+                "_id": "5",
+                "name": "Mistol",
+                "price": "12.50"
+            }, {
+                "_id": "6",
+                "name": "Sarten",
+                "price": "15.50"
+            }, {
+                "_id": "7",
+                "name": "Cordero",
+                "price": "30.50"
+            }, {
+                "_id": "8",
+                "name": "Pan",
+                "price": "0.50"
+            }]
+
+        },
+         {
+            "_fecha": "01/02/2015",
+            "productos": [{
+                "_id": "5",
+                "name": "Sardinas",
+                "price": "12.50"
+            }, {
+                "_id": "6",
+                "name": "Sarten",
+                "price": "15.50"
+            }]
+
+        }]
+    }
+}

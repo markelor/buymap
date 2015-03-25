@@ -14,8 +14,6 @@
         </ion-header-bar>
         <ion-content>
        
-
-
             <!-- The list directive is great, but be sure to also checkout the collection repeat directive when scrolling through large lists -->
 
             <ion-list  show-reorder="data.showReorder">
@@ -34,9 +32,29 @@
 
     <!-- Left menu -->
     <ion-side-menu side="left">
-        <ion-list>
-            <ion-item>Home</ion-item>
-        </ion-list>
+        <ion-header-bar class="bar-positive" >
+            <h1 class="title">Ionic opciones</h1>
+            <div class="buttons">
+                <button class="button" ng-click="data.showReorder = !data.showReorder" >
+                    Ordenar
+                </button>
+            </div>
+        </ion-header-bar>
+        <ion-content>
+       
+            <!-- The list directive is great, but be sure to also checkout the collection repeat directive when scrolling through large lists -->
+
+            <ion-list  show-reorder="data.showReorder">
+
+                <ion-item  ng-click="show(producto)" ng-repeat="producto in productos" producto="poducto" class="item-remove-animate">
+                    <button class="button button-clear button-dark">{{ producto.name }}</button>
+
+                    <ion-reorder-button class="ion-navicon" on-reorder="moveItem(producto, $fromIndex, $toIndex)"></ion-reorder-button>
+                </ion-item>
+
+            </ion-list>
+           
+        </ion-content>
     </ion-side-menu>
 
 </ion-side-menus>

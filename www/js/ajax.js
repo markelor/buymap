@@ -15,7 +15,7 @@ angular.module('starter.ajax', [])
         $.getJSON('server/valoraciones.json', {}, function(json) {
             success(json);
         });
-    }
+    };
 
     return {
         cargarDatos: cargarDatos,
