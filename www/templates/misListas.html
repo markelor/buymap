@@ -1,4 +1,4 @@
-<ion-side-menus ng-init ="getProductosDb()" >
+<ion-side-menus >
     <!-- Center content -->
     <ion-side-menu-content>
         <ion-header-bar class="bar-positive" >
@@ -46,10 +46,10 @@
 
             <ion-list  show-reorder="data.showReorder">
 
-                <ion-item  ng-click="show(producto)" ng-repeat="producto in productos" producto="poducto" class="item-remove-animate">
-                    <button class="button button-clear button-dark">{{ producto.name }}</button>
+                <ion-item  ng-click="show(producto)" ng-repeat="lista in listas" lista="lista" class="item-remove-animate">
+                    <button class="button button-clear button-dark">{{lista.fecha}}</button>
 
-                    <ion-reorder-button class="ion-navicon" on-reorder="moveItem(producto, $fromIndex, $toIndex)"></ion-reorder-button>
+                    <ion-reorder-button class="ion-navicon" on-reorder="moveItem(lista, $fromIndex, $toIndex)"></ion-reorder-button>
                 </ion-item>
 
             </ion-list>

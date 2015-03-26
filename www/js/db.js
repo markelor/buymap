@@ -6,11 +6,9 @@ angular.module('starter.db', [])
 
 
     var getAllListas = function(success) {
-        console.log("getAllListas");
         localDB.allDocs({
             include_docs: true
         }).then(function(data) {
-            console.log(data);
             var datos = [];
             for (var i = 0; i < data.rows.length; i++) {
                 datos.push(data.rows[i].doc);
@@ -37,7 +35,6 @@ angular.module('starter.db', [])
     var addAllListas = function(data) {
 
         var insertarListaDb = function(misListas) {
-        console.log(misListas); 
             localDB.put(misListas).then(function(result) {
                 // handle response
             }).catch(function(err) {
@@ -48,8 +45,6 @@ angular.module('starter.db', [])
 
             for (var i = 0; i < indexListas; i++) {
                 insertarListaDb(data.listas.lista[i]);
-                //console.log(data.listas.lista[i]);
-                //console.log(i);
             }
 
     };

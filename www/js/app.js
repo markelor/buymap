@@ -23,25 +23,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
     //obtener datos ajax
 
     var datos = "";
-    //Cargar datos con una lista
-    /*AJAX.cargarDatos(function(datos) {
-        Db.addAllProductos(datos.lista1.productos);
-       // console.log('cargarDatos: ' + JSON.stringify(datos.lista1.productos));
-    });
-*/
     //cargar datos todas las listas
     AJAX.cargarDatos(function(datos) {
         Db.addAllListas(datos);
         console.log('cargarDatos: ' + JSON.stringify(datos));
     });
-
-
-
-   //Db.getAllProductos(function(productos) {
-
-        // console.log(productos);
-
-    // });
 
 })
 

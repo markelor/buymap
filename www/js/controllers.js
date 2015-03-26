@@ -147,19 +147,15 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation'] )
 
     };
 
-    //$scope.productos = [];
-    //mostrar productos que estan en DB
-    $scope.getProductosDb = function() {
-
+    //mostrar listas con fecha de creacion y una lista en la vista
+        $scope.listas=[];
+        $scope.productos=[];
         Db.getAllListas(function(datos) {
             //console.log(datos);
-            //$scope.productos = datos;
+            $scope.listas=datos;
+             $scope.productos=datos[0].productos;    
 
         });
-        
-    };
-    //$location.url("/tab/misListas");
-    //Seleccionar listas ya creadas
 
 })
 

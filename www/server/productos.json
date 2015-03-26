@@ -48,11 +48,11 @@
             "_id" : "3",
             "fecha": "01/02/2015",
             "productos": [{
-                "_id": "5",
+                "_id": "9",
                 "name": "Sardinas",
                 "price": "12.50"
             }, {
-                "_id": "6",
+                "_id": "10",
                 "name": "Sarten",
                 "price": "15.50"
             }]
