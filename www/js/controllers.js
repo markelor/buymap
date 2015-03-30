@@ -1,7 +1,7 @@
-angular.module('starter.controllers', ['starter.db', 'starter.geolocation'] )
+angular.module('starter.controllers', ['starter.db', 'starter.geolocation'])
 
 //mislistas controller
-.controller('MisListasCtrl', function($scope,$ionicSideMenuDelegate, $ionicActionSheet,
+.controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet,
     $ionicPopup, $timeout, $location, Db) {
 
 
@@ -70,11 +70,11 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation'] )
         });
         myPopup.then(function(res) {
             //creamos el producto
-            
-            var id=$scope.productos.length+1;
-            id=id.toString();
+
+            var id = $scope.productos.length + 1;
+            id = id.toString();
             console.log(id);
-            producto=[{
+            producto = [{
                 "_id": id,
                 "name": res,
                 "price": "12.50"
@@ -148,14 +148,29 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation'] )
     };
 
     //mostrar listas con fecha de creacion y una lista en la vista
-        $scope.listas=[];
-        $scope.productos=[];
-        Db.getAllListas(function(datos) {
-            //console.log(datos);
-            $scope.listas=datos;
-             $scope.productos=datos[0].productos;    
+    $scope.listas = [];
+    $scope.productos = [];
+    Db.getAllListas(function(datos) {
+        //console.log(datos);
+        $scope.listas = datos;
+        $scope.productos = datos[0].productos;
 
-        });
+    });
+
+
+    //mostrar lista al elejir el producto
+    $scope.showLista = function(lista,index) {
+        
+                //hideSheet();
+                //editar  
+                var datos= $scope.listas;
+                 $scope.productos = datos[index].productos;
+                
+            
+       
+
+    };
+
 
 })
 
@@ -163,7 +178,7 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation'] )
 
 .controller('RutaCtrl', ['$scope', '$ionicLoading', 'Geolocation', function($scope, $ionicLoading, Geolocation) {
 
-  $scope.toggleRight = function() {
+    $scope.toggleRight = function() {
         $ionicSideMenuDelegate.toggleRight();
     };
 
@@ -189,7 +204,7 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation'] )
             title: 'Zona'
         });
 
-        $scope.map = map;     
+        $scope.map = map;
     });
 }])
 
@@ -287,5 +302,5 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation'] )
         $scope.valoraciones = valoraciones;
     });
 
-    
+
 });
