@@ -17,19 +17,7 @@ angular.module('starter.db', [])
         });
     };
 
-    var getAllValoraciones = function(success) {
-        console.log("getAllValoraciones");
-        localDB.allDocs({
-            include_docs: true
-        }).then(function(data) {
-            var datos = [];
-            for (var i = 0; i < data.rows.length; i++) {
-                datos.push(data.rows[i].doc);
-            }
-            success(datos);
-        });
 
-    };
 
 
     var addAllListas = function(data) {
@@ -43,13 +31,31 @@ angular.module('starter.db', [])
         };
         var indexListas = Object.keys(data.listas.lista).length;
 
-            for (var i = 0; i < indexListas; i++) {
-                insertarListaDb(data.listas.lista[i]);
-            }
+        for (var i = 0; i < indexListas; i++) {
+            insertarListaDb(data.listas.lista[i]);
+        }
 
     };
-     var addAllValoraciones = function(data) {
-        
+
+
+
+    var addProducto = function(listToAdd, producto) {
+        // handle response
+        //se añade el producto a la lista
+        listToAdd.productos.push(producto);
+        console.log(listToAdd);
+        //editamos la lista, se supone que bulkDocs al ver que _rev de la lista
+        //y el _rev de la base de datos son las mismas, sobreescribe la lista, y
+        //esto queda actualizado. En realidad, añade esta lista camiandole el _rev
+        localDB.bulkDocs([listToAdd]).then(function(result) {
+            // handle result
+        }).catch(function(err) {
+            console.log(err);
+        });
+    };
+
+    var addAllValoraciones = function(data) {
+
         var insertarValoracionesDb = function(valoraciones) {
             localDB.put(valoraciones).then(function(result) {
                 //console.log(result);
@@ -65,9 +71,24 @@ angular.module('starter.db', [])
 
     };
 
+    var getAllValoraciones = function(success) {
+        console.log("getAllValoraciones");
+        localDB.allDocs({
+            include_docs: true
+        }).then(function(data) {
+            var datos = [];
+            for (var i = 0; i < data.rows.length; i++) {
+                datos.push(data.rows[i].doc);
+            }
+            success(datos);
+        });
+
+    };
+
     return {
         getAllListas: getAllListas,
         addAllListas: addAllListas,
+        addProducto: addProducto,
         addAllValoraciones: addAllValoraciones,
         getAllValoraciones: getAllValoraciones
     };

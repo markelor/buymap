@@ -74,13 +74,12 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation'])
             var id = $scope.productos.length + 1;
             id = id.toString();
             console.log(id);
-            producto = [{
+            producto = {
                 "_id": id,
                 "name": res,
                 "price": "12.50"
-            }];
-            $scope.productos.push($scope.producto);
-            Db.addAllProductos(producto);
+            };
+            Db.addProducto($scope.listToAdd,producto);
             console.log('Tapped!', res);
         });
         $timeout(function() {
@@ -151,24 +150,37 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation'])
     $scope.listas = [];
     $scope.productos = [];
     Db.getAllListas(function(datos) {
-        //console.log(datos);
         $scope.listas = datos;
+        //enseñar primera lista por defecto
         $scope.productos = datos[0].productos;
+        // lista para añadir, por defecto tomar el primero
+        $scope.listToAdd=$scope.listas[0];
 
     });
-
+ 
 
     //mostrar lista al elejir el producto
-    $scope.showLista = function(lista,index) {
-        
-                //hideSheet();
-                //editar  
-                var datos= $scope.listas;
-                 $scope.productos = datos[index].productos;
-                
-            
-       
+    $scope.showLista = function(lista, index) {
 
+        var datos = $scope.listas;
+        $scope.productos = datos[index].productos;
+        //guardamos la lista que hemos elejido para luego añadir aqui el producto
+        $scope.listToAdd=datos[index];
+
+    };
+
+    //eliminar lista
+    $scope.onListDelete = function(lista) {
+        $scope.lista.splice($scope.lista.indexOf(lista), 1);
+    };
+    //los botones estan ocultos por defecto
+    $scope.showButtons = false;
+    $scope.showOperationButtons = function() {
+        $scope.showButtons = !$scope.showButtons;
+    };
+    //ocultar botones siempre que cerremos el navbar
+    $scope.hideOperationButtons = function() {
+        $scope.showButtons =false;
     };
 
 
