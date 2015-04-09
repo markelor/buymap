@@ -2,7 +2,6 @@
     "listas": {
         "lista": [{
             "_id": "1",
-            "new_edits":false,
             "fecha": "20/10/2014",
             "productos": [{
                 "_id": "1",
