@@ -15,7 +15,7 @@
         <ion-content>
             <!-- The list directive is great, but be sure to also checkout the collection repeat directive when scrolling through large lists -->
             <ion-list show-reorder="data.showReorder">
-                <ion-item ng-click="show(producto)" ng-repeat="producto in productos" producto="poducto" class="item-remove-animate">
+                <ion-item ng-click="show(producto)" ng-repeat="producto in productos track by producto._id" producto="poducto" class="item-remove-animate">
                     <button class="button button-clear button-dark">{{ producto.name }}</button>
                     <ion-reorder-button class="ion-navicon" on-reorder="moveItem(producto, $fromIndex, $toIndex)"></ion-reorder-button>
                 </ion-item>
@@ -33,7 +33,7 @@
         <ion-content>
             <!-- The list directive is great, but be sure to also checkout the collection repeat directive when scrolling through large lists -->
             <ion-list >
-                <ion-item ng-click="showLista(lista,$index)" ng-repeat="lista in listas" lista="lista" class="item-remove-animate">
+                <ion-item ng-click="showLista(lista,$index)" ng-repeat="lista in listas track by lista._id" lista="lista" class="item-remove-animate">
                    
                     <span class="btnListas"  ng-show="(showButtons == true)" ng-hide ="(showButtons == false)" >  
                         <button class=" item-button-left button button-icon icon ion-plus-circled">

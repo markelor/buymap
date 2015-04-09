@@ -47,8 +47,9 @@ angular.module('starter.db', [])
         //editamos la lista, se supone que bulkDocs al ver que _rev de la lista
         //y el _rev de la base de datos son las mismas, sobreescribe la lista, y
         //esto queda actualizado. En realidad, añade esta lista camiandole el _rev
-        localDB.bulkDocs([listToAdd],listToAdd._rev,new_edits=false).then(function(result) {
+        localDB.put(listToAdd, listToAdd._id, listToAdd._rev).then(function(result) {
             // handle result
+            console.log(result);
         }).catch(function(err) {
             console.log(err);
         });

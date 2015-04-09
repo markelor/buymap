@@ -156,6 +156,8 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation'])
         // lista para añadir, por defecto tomar el primero
         $scope.listToAdd=$scope.listas[0];
 
+        console.log($scope.productos);
+
     });
  
 
