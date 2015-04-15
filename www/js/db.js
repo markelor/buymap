@@ -51,9 +51,10 @@ angular.module('starter.db', [])
         //se añade el producto a la lista
         listToAdd.productos.push(producto);
         console.log(listToAdd);
+        console.log(producto._id);
         localDB.put(listToAdd, listToAdd._id, listToAdd._rev).then(function(result) {
             // handle result
-            console.log(result);
+            listToAdd._rev = result.rev;
         }).catch(function(err) {
             console.log(err);
         });
