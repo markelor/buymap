@@ -36,10 +36,55 @@ angular.module('starter.db', [])
         }
 
     };
-
-
+    var addLista = function(lista) {
+        
+            localDB.put(lista).then(function(result) {
+                // handle response
+            }).catch(function(err) {
+                console.log(err);
+            });
+        
+    };
 
     var addProducto = function(listToAdd, producto) {
+        // handle response
+        //se añade el producto a la lista
+        listToAdd.productos.push(producto);
+        console.log(listToAdd);
+        localDB.put(listToAdd, listToAdd._id, listToAdd._rev).then(function(result) {
+            // handle result
+            console.log(result);
+        }).catch(function(err) {
+            console.log(err);
+        });
+       
+    };
+    var editProducto = function(listToAdd, producto,indice) {
+        // handle response
+        //se añade el producto a la lista
+        listToAdd[indice]=producto;
+        console.log(listToAdd);
+       localDB.bulkDocs([listToAdd],new_edits=false).then(function(result) {
+            // handle result
+        }).catch(function(err) {
+            console.log(err);
+        });
+    };
+    var deleteProducto = function(listToAdd) {
+        // handle response
+        //se añade el producto a la lista
+        console.log(listToAdd);
+     
+       localDB.bulkDocs([listToAdd]).then(function(result) {
+            // handle result
+            console.log("hemen");
+        }).catch(function(err) {
+            console.log(err);
+        });
+
+    };
+
+    /*var addProducto = function(listToAdd, producto) {
         // handle response
         //se añade el producto a la lista
         listToAdd.productos.push(producto);
@@ -54,6 +99,7 @@ angular.module('starter.db', [])
             console.log(err);
         });
     };
+    */
 
     var addAllValoraciones = function(data) {
 
@@ -89,7 +135,10 @@ angular.module('starter.db', [])
     return {
         getAllListas: getAllListas,
         addAllListas: addAllListas,
+        addLista:addLista,
         addProducto: addProducto,
+        editProducto:editProducto,
+        deleteProducto:deleteProducto,
         addAllValoraciones: addAllValoraciones,
         getAllValoraciones: getAllValoraciones
     };

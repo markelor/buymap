@@ -36,7 +36,7 @@
                 <ion-item ng-click="showLista(lista,$index)" ng-repeat="lista in listas track by lista._id" lista="lista" class="item-remove-animate">
                    
                     <span class="btnListas"  ng-show="(showButtons == true)" ng-hide ="(showButtons == false)" >  
-                        <button class=" item-button-left button button-icon icon ion-plus-circled">
+                        <button class=" item-button-left button button-icon icon ion-plus-circled" ng-click="addLista()">
                         </button>
                          <button class=" item-button-left button button-icon icon ion-minus-circled">
                         </button>                  

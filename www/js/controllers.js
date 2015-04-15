@@ -1,150 +1,8 @@
-angular.module('starter.controllers', ['starter.db', 'starter.geolocation'])
+angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'starter.popup'])
 
 //mislistas controller
 .controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet,
-    $ionicPopup, $timeout, $location, Db) {
-
-
-    $scope.toggleLeft = function() {
-        $ionicSideMenuDelegate.toggleLeft();
-    };
-
-    //mover
-
-    $scope.moveItem = function(producto, fromIndex, toIndex) {
-        $scope.productos.splice(fromIndex, 1);
-        $scope.productos.splice(toIndex, 0, producto);
-    };
-
-    // Crear el popup para editar 
-    $scope.showPopupEditProducto = function(producto) {
-        // Crear una copia del producto
-        $scope.producto = Object.create(producto);
-        // El popup
-        myPopup = $ionicPopup.show({
-            template: '<input type="text" ng-model="producto.name">',
-            title: 'Escribe el nuevo nombre',
-            scope: $scope,
-            buttons: [{
-                text: 'Cancelar'
-            }, {
-                text: '<b>Guardar</b>',
-                type: 'button-positive',
-                onTap: function(e) {
-                    producto.name = $scope.producto.name;
-                }
-            }]
-        });
-        myPopup.then(function(res) {
-            console.log(res);
-        });
-        $timeout(function() {
-            myPopup.close(); //cerrar el popup despues de 20 segundos
-        }, 20000);
-    };
-    // Crear el popup para añadir ptoducto
-    $scope.showPopupAddProducto = function() {
-        // El popup
-        // Crear una copia del producto
-        $scope.producto = {};
-
-        // An elaborate, custom popup
-        var myPopup = $ionicPopup.show({
-            template: '<input type="text" ng-model="producto.name">',
-            title: 'Añadir producto',
-            scope: $scope,
-            buttons: [{
-                text: 'Cancelar'
-            }, {
-                text: '<b>Añadir</b>',
-                type: 'button-positive',
-                onTap: function(e) {
-                    if (!$scope.producto.name) {
-                        //no dejar al usuario hasta que añada un producto
-                        e.preventDefault();
-                    } else {
-                        return $scope.producto.name;
-                    }
-                }
-            }, ]
-        });
-        myPopup.then(function(res) {
-            //creamos el producto
-
-            var id = $scope.productos.length + 1;
-            id = id.toString();
-            console.log(id);
-            producto = {
-                "_id": id,
-                "name": res,
-                "price": "12.50"
-            };
-            Db.addProducto($scope.listToAdd,producto);
-            console.log('Tapped!', res);
-        });
-        $timeout(function() {
-            myPopup.close(); //Cerrar eel popup despues de 20 segundos
-        }, 20000);
-    };
-    // Popup de comfirmacion para eliminar producto
-    $scope.showConfirm = function() {
-        var confirmPopup = $ionicPopup.confirm({
-            title: 'Eliminar producto',
-            template: '¿Quiere eliminar este producto de la lista?'
-        });
-        confirmPopup.then(function(res) {
-            if (res) {
-                console.log('Estas seguro');
-            } else {
-                console.log('Estas seguro');
-            }
-        });
-    };
-
-    // Al hacer click, ver menu para editar, borrar, modificar...
-    $scope.show = function(producto) {
-
-        // ver tab
-        var hideSheet = $ionicActionSheet.show({
-            buttons: [{
-                text: 'Añadir'
-            }, {
-                text: 'Editar'
-            }],
-
-            destructiveText: 'Borrar',
-            titleText: 'Modifica tu producto',
-            cancelText: 'Cancel',
-            cancel: function() {
-                // add cancel code..
-            },
-            buttonClicked: function(index) {
-                hideSheet();
-                //editar
-                if (index === 1) {
-                    $scope.showPopupEditProducto(producto);
-
-                } else {
-                    //añadir un producto
-                    $scope.showPopupAddProducto();
-
-
-                }
-            },
-            destructiveButtonClicked: function(index) {
-                //borrar producto
-                $scope.productos.splice($scope.productos.indexOf(producto), 1);
-                return true;
-            }
-
-        });
-
-        // Desaparece despues de los segundos que queramos
-        $timeout(function() {
-            hideSheet();
-        }, 10000);
-
-    };
+    $ionicPopup, $timeout, $location, Db, Popup) {
 
     //mostrar listas con fecha de creacion y una lista en la vista
     $scope.listas = [];
@@ -154,12 +12,133 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation'])
         //enseñar primera lista por defecto
         $scope.productos = datos[0].productos;
         // lista para añadir, por defecto tomar el primero
-        $scope.listToAdd=$scope.listas[0];
-
+        $scope.listToAdd = $scope.listas[0];
         console.log($scope.productos);
 
+        //poner men a la izquierda
+        $scope.toggleLeft = function() {
+            $ionicSideMenuDelegate.toggleLeft();
+        };
+
+        //mover
+        $scope.moveItem = function(producto, fromIndex, toIndex) {
+            $scope.productos.splice(fromIndex, 1);
+            $scope.productos.splice(toIndex, 0, producto);
+        };
+        // addLista()
+        // deleteLista()
+        $scope.addLista = function() {
+            // Crear una copia del producto
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+            today = dd + '/' + mm + '/' + yyyy;
+            console.log(today);
+
+            indice = $scope.listas.length - 1;
+            idLista = parseInt($scope.listas[indice]._id) + 1;
+            idLista = idLista.toString();
+
+
+            lista = {
+                "_id": idLista,
+                "fecha": today,
+                "productos": [{
+                    "_id": "1",
+                    "name": "Pimiento",
+                    "price": "12.50"
+                }]
+            };
+            $scope.listas.push(lista);
+            console.log($scope.listas);
+            Db.addLista(lista);
+        };
+        /* $scope.showPopupDeleteLista = function() {
+            // Crear una copia del producto
+            $scope.producto = Object.create(producto);
+            operacion="Editar";
+            titulo='Escribe el nuevo nombre';
+            texto='Guardar';
+            // El popup
+            //Popup.insertPopup($scope,operacion,titulo,producto);
+        };
+        */
+
+
+        // Crear el popup para editar 
+        $scope.showPopupEditProducto = function(producto) {
+            // Crear una copia del producto
+            $scope.producto = Object.create(producto);
+            operacion = "Editar";
+            titulo = 'Escribe el nuevo nombre';
+            texto = 'Guardar';
+            // El popup
+            Popup.insertPopup($scope, operacion, titulo, producto);
+        };
+        // Crear el popup para añadir ptoducto
+        $scope.showPopupAddProducto = function(producto) {
+            // El popup
+            // Crear una copia del producto
+            $scope.producto = {};
+            operacion = "Añadir";
+            titulo = 'Añadir producto';
+            texto = 'Añadir';
+            Popup.insertPopup($scope, operacion, titulo, producto);
+
+        };
+
+
+        // Al hacer click, ver menu para editar, borrar, modificar...
+        $scope.show = function(producto) {
+
+            // ver tab
+            var hideSheet = $ionicActionSheet.show({
+                buttons: [{
+                    text: 'Añadir'
+                }, {
+                    text: 'Editar'
+                }],
+
+                destructiveText: 'Borrar',
+                titleText: 'Modifica tu producto',
+                cancelText: 'Cancel',
+                cancel: function() {
+                    // add cancel code..
+                },
+                buttonClicked: function(index) {
+                    hideSheet();
+                    //editar
+                    if (index === 1) {
+                        $scope.showPopupEditProducto(producto);
+
+                    } else {
+                        //añadir un producto
+                        $scope.showPopupAddProducto();
+
+
+                    }
+                },
+                destructiveButtonClicked: function() {
+                    //obtener indice del producto
+
+                    //borrar producto
+                    indice = $scope.productos.indexOf(producto);
+                    $scope.productos.splice(indice, 1);
+                    Db.deleteProducto($scope.listToAdd);
+                    return true;
+                }
+
+            });
+
+            // Desaparece despues de los segundos que queramos
+            /* $timeout(function() {
+                 hideSheet();
+             }, 10000);*/
+
+        };
+
     });
- 
 
     //mostrar lista al elejir el producto
     $scope.showLista = function(lista, index) {
@@ -167,13 +146,8 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation'])
         var datos = $scope.listas;
         $scope.productos = datos[index].productos;
         //guardamos la lista que hemos elejido para luego añadir aqui el producto
-        $scope.listToAdd=datos[index];
+        $scope.listToAdd = datos[index];
 
-    };
-
-    //eliminar lista
-    $scope.onListDelete = function(lista) {
-        $scope.lista.splice($scope.lista.indexOf(lista), 1);
     };
     //los botones estan ocultos por defecto
     $scope.showButtons = false;
@@ -182,7 +156,7 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation'])
     };
     //ocultar botones siempre que cerremos el navbar
     $scope.hideOperationButtons = function() {
-        $scope.showButtons =false;
+        $scope.showButtons = false;
     };
 
 
