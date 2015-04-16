@@ -1,54 +1,99 @@
-[{
-        "_id": 0,
-        "name": "SuperFresh",
-        "location": "0,0",
-        "type": "general"
-    }, {
-        "_id": 1,
-        "name": "Autoservicio Mikel",
-        "location": "0,0",
-        "type": "general"
-    }, {
-        "_id": 2,
-        "name": "Fruteria Maite",
-        "location": "0,0",
-        "type": "fruteria"
-    }, {
-        "_id": 3,
-        "name": "Panadería Olazabal",
-        "location": "0,0",
-        "type": "panaderia"
-    }, {
-        "_id": 4,
-        "name": "Pescadería Pasaia",
-        "location": "0,0",
-        "type": "pescaderia"
-    }, {
-        "_id": 5,
-        "name": "Super Adarra",
-        "location": "0,0",
-        "type": "general"
-    },{
-        "_id": 6,
-        "name": "Carnicería Gabilondo",
-        "location": "0,0",
-        "type": "carniceria"
-    },{
-        "_id": 7,
-        "name": "Super Aitor",
-        "location": "0,0",
-        "type": "general"
-    },{
-        "_id": 8,
-        "name": "Frutas y Verduras Xabi",
-        "location": "0,0",
-        "type": "fruteria"
-    },{
-        "_id": 9,
-        "name": "Pescadería Amaia",
-        "location": "0,0",
-        "type": "pescaderia"
+{
+    "comercios": {
+        "comercio": [{
+            "_id" : "C_1",
+            "nombre": "Panaderia Olazabal",
+            "longitud":"-3.703308", 
+            "latitud":"40.416875",
+            "categoria":"panaderia",
+            "productos": [{
+                "_id": "P_1",
+                "name": "Pan",
+                "price": "1.20"
+            }, {
+                "_id": "P_2",
+                "name": "Bollos",
+                "price": "1.00"
+            }]
+
+        },
+        {
+            "_id" : "C_2",
+            "nombre": "Carniceria Iñigo",
+            "latitud":"43.177476",
+            "longitud":"-2.312301",
+            "categoria": "Carniceria",
+            "productos": [{
+                "_id": "P_3",
+                "name":"Chuletas",
+                "price": "12.50"
+            }, {
+                "_id": "P_4",
+                "name": "Jamon Serrano",
+                "price": "1.49"
+            }, {
+                "_id": "P_5",
+                "name": "Cordero",
+                "price": "30.50"
+            }, {
+                "_id": "P_6",
+                "name": "Chorizo",
+                "price": "0.90"
+            }]
+
+        },
+         {
+            "_id" : "C_3",
+            "nombre": "Fruteria Rita",
+            "latitud":"43.3072927",
+            "longitud":"-1.973883",
+            "categoria": "fruteria",
+            "productos": [{
+                "_id": "P_7",
+                "name": "Manzanas",
+                "price": "0.80"
+            }, {
+                "_id": "P_8",
+                "name": "Limones",
+                "price": "0.45"
+            }]
+        },
+
+        {
+            "_id" : "C_4",
+            "nombre": "Milar Larramendi",
+            "latitud":"43.3072927",
+            "longitud":"-1.973883",
+            "categoria": "Electrodomesticos",
+            "productos": [{
+                "_id": "P_7",
+                "name": "Manzanas",
+                "price": "0.80"
+            }, {
+                "_id": "P_8",
+                "name": "Limones",
+                "price": "0.45"
+            }]
+        },
+          {
+            "_id" : "C_5",
+            "nombre": "Alfresco",
+            "latitud":"43.180469",
+            "longitud":"-2.3123127",
+            "categoria": "Pescaderia",
+            "productos": [{
+                "_id": "P_7",
+                "name": "Manzanas",
+                "price": "0.80"
+            }, {
+                "_id": "P_8",
+                "name": "Limones",
+                "price": "0.45"
+            }]
+
+        }]
     }
+}
 
 
-]
+

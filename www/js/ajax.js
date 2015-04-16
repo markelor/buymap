@@ -17,11 +17,16 @@ angular.module('starter.ajax', [])
         });
     };
 
+    var cargarComercios = function(success) {
+        $.getJSON('server/comercios.json', {}, function(json){
+            success(json);
+        });
+    };
+
     return {
         cargarDatos: cargarDatos,
         cargarUsuarios: cargarUsuarios,
-        cargarValoraciones: cargarValoraciones
+        cargarValoraciones: cargarValoraciones,
+        cargarComercios: cargarComercios
     };
-})
-
-;
+});

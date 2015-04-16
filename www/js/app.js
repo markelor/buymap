@@ -22,14 +22,29 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
 
     //obtener datos ajax
 
-    var datos = "";
+     var datos = "";
     //cargar datos todas las listas
     AJAX.cargarDatos(function(datos) {
         Db.addAllListas(datos);
         console.log('cargarDatos: ' + JSON.stringify(datos));
     });
 
+     var comercios = "";
+
+    AJAX.cargarComercios(function(comercios){
+        Db.addAllComercios(comercios)
+           
+    });
+    //obtener los usuarios
+    AJAX.cargarUsuarios(function(datos) {
+        console.log(datos);
+        for(var i=0; i<datos.length;i++){
+        Db.guardar(datos[i].username, datos[i].password, datos[i].email);
+      }
+    });
+
 })
+
 
 .config(function($stateProvider, $urlRouterProvider) {
 
