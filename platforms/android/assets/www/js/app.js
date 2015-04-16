@@ -25,15 +25,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
      Db.getDb(function(db) {
         console.log(db);
         console.log(db._docCount);
-        if (db._docCount === -1) {
+       
             //primera vez
             //cargar datos, todas las listas
             AJAX.cargarDatos(function(datos) {
                 Db.addAllListas(datos);
                 console.log('cargarDatos: ' + JSON.stringify(datos));
             });
-            console.log("ole");
-        }
+               
     });
 
      var comercios = "";
