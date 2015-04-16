@@ -4,6 +4,9 @@ angular.module('starter.db', [])
 .factory('Db', function() {
     var localDB = new PouchDB("buymap");
 
+    var getDb=(function(db){
+        db(localDB);
+    });
 
     var getAllListas = function(success) {
         localDB.allDocs({
@@ -21,7 +24,6 @@ angular.module('starter.db', [])
 
 
     var addAllListas = function(data) {
-
         var insertarListaDb = function(misListas) {
             localDB.put(misListas).then(function(result) {
                 // handle response
@@ -50,8 +52,6 @@ angular.module('starter.db', [])
         // handle response
         //se añade el producto a la lista
         listToAdd.productos.push(producto);
-        console.log(listToAdd);
-        console.log(producto._id);
         localDB.put(listToAdd, listToAdd._id, listToAdd._rev).then(function(result) {
             // handle result
             listToAdd._rev = result.rev;
@@ -67,6 +67,7 @@ angular.module('starter.db', [])
         console.log(listToAdd);
        localDB.bulkDocs([listToAdd],new_edits=false).then(function(result) {
             // handle result
+             listToAdd._rev = result.rev;
         }).catch(function(err) {
             console.log(err);
         });
@@ -78,7 +79,8 @@ angular.module('starter.db', [])
      
        localDB.bulkDocs([listToAdd]).then(function(result) {
             // handle result
-            console.log("hemen");
+             listToAdd._rev = result.rev;
+        
         }).catch(function(err) {
             console.log(err);
         });
@@ -134,6 +136,7 @@ angular.module('starter.db', [])
     };
 
     return {
+        getDb:getDb,
         getAllListas: getAllListas,
         addAllListas: addAllListas,
         addLista:addLista,
