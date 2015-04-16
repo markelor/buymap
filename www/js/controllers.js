@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'starter.popup'])
+angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'starter.popup', 'ui.router'])
 
 //mislistas controller
 .controller('MisListasCtrl', function($scope, $ionicSideMenuDelegate, $ionicActionSheet,
@@ -273,7 +273,6 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
         Db.cargar(user.username, user.password);
 
     };
-
 })
 
 .controller('RegistroCtrl', function($scope, Db) {
