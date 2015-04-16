@@ -20,35 +20,81 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
         }
     });
 
-    //obtener datos ajax
 
-     Db.getDb(function(db) {
-        console.log(db);
-        console.log(db._docCount);
-       
-            //primera vez
-            //cargar datos, todas las listas
-            AJAX.cargarDatos(function(datos) {
-                Db.addAllListas(datos);
-                console.log('cargarDatos: ' + JSON.stringify(datos));
-            });
-               
+    Db.getDb(function(db) {
+        db.allDocs({}).then(function(results) {
+            console.log(results);
+            if (results.total_rows === 0) {
+                //primera vez
+                //cargar datos, todas las listas
+                AJAX.cargarDatos(function(datos) {
+                    Db.addAllListas(datos);
+                    console.log('cargarDatos: ' + JSON.stringify(datos));
+                    console.log("behin bakarrik");
+                });
+            } else {
+                console.log("aldiro kargatzen");
+            }
+        });
+
+
     });
 
-     var comercios = "";
 
-    AJAX.cargarComercios(function(comercios){
-        Db.addAllComercios(comercios);
-           
-    });
-    //obtener los usuarios
-    AJAX.cargarUsuarios(function(datos) {
-        console.log(datos);
-        for(var i=0; i<datos.length;i++){
-        Db.guardar(datos[i].username, datos[i].password, datos[i].email);
-      }
+    Db.getDb(function(db) {
+        db.allDocs({}).then(function(results) {
+            console.log(results);
+            if (results.total_rows === 0) {
+                //primera vez
+                //cargar datos, todas las listas
+                AJAX.cargarDatos(function(datos) {
+                    Db.addAllListas(datos);
+                    console.log('cargarDatos: ' + JSON.stringify(datos));
+                    console.log("behin bakarrik");
+                });
+            } else {
+                console.log("ez du kargatzen");
+            }
+        });
+
+
     });
 
+    Db.getDb(function(db) {
+        db.allDocs({}).then(function(results) {
+            console.log(results);
+            if (results.total_rows === 0) {
+                //primera vez
+                //cargar datos, todas las listas
+                AJAX.cargarComercios(function(comercios) {
+                    Db.addAllComercios(comercios);
+                    console.log("behin bakarrik comercios");
+                });
+            } else {
+                console.log("ez du kargatzen comercios");
+            }
+        });
+
+
+    });
+
+    Db.getDb(function(db) {
+        db.allDocs({}).then(function(results) {
+            console.log(results);
+            if (results.total_rows === 0) {
+                //primera vez
+                //cargar datos, todas las listas
+                AJAX.cargarComercios(function(comercios) {
+                    Db.addAllComercios(comercios);
+                    console.log("behin bakarrik login");
+                });
+            } else {
+                console.log("ez du kargatzen login");
+            }
+        });
+
+
+    });
 
 })
 
@@ -116,11 +162,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
     });
 
 
-    /*.state('valoraciones',{
-        url: '/valoraciones',
-        templateUrl: 'templates/valoraciones.html',
-        controller: 'valoracionesCtrl'
-    })*/
 
     // ir a esta ruta por defecto
     $urlRouterProvider.otherwise('/login');
