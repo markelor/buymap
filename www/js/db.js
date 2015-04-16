@@ -11,7 +11,8 @@ angular.module('starter.db', [])
 
             var getAllListas = function(success) {
                 localDB.allDocs({
-                    include_docs: true
+                    include_docs: true,
+                    startkey: 'L_'
                 }).then(function(data) {
                     var datos = [];
                     for (var i = 0; i < data.rows.length; i++) {
@@ -42,6 +43,7 @@ angular.module('starter.db', [])
 
                 localDB.put(lista).then(function(result) {
                     // handle response
+                     lista._rev = result.rev;
                 }).catch(function(err) {
                     console.log(err);
                 });
