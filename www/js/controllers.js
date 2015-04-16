@@ -25,8 +25,7 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
             $scope.productos.splice(fromIndex, 1);
             $scope.productos.splice(toIndex, 0, producto);
         };
-        // addLista()
-        // deleteLista()
+
         $scope.addLista = function() {
             // Crear una copia del producto
             var today = new Date();
@@ -51,19 +50,14 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
                 }]
             };
             $scope.listas.push(lista);
-            console.log($scope.listas);
             Db.addLista(lista);
         };
-        /* $scope.showPopupDeleteLista = function() {
-            // Crear una copia del producto
-            $scope.producto = Object.create(producto);
-            operacion="Editar";
-            titulo='Escribe el nuevo nombre';
-            texto='Guardar';
-            // El popup
-            //Popup.insertPopup($scope,operacion,titulo,producto);
+        $scope.deleteLista = function(index) {
+            //borrar producto
+            $scope.listas.splice(index, 1);
+            Db.deleteLista($scope.listToAdd);
         };
-        */
+
 
 
         // Crear el popup para editar 
@@ -175,9 +169,9 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
     $scope.GeoPosicionar = function() {
         Geolocation.localizar(function(coords) {
             var myLatlng = new google.maps.LatLng(coords.latitude, coords.longitude);
-            Geolocation.insertarMapa(myLatlng)
+            Geolocation.insertarMapa(myLatlng);
         });
-    }
+    };
 
     $scope.DibujarMapa = function(distancia, myLatlng) {
 
@@ -185,7 +179,7 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
             console.log(datos + "data");
             var waypts = new Array;
             var directionsService = new google.maps.DirectionsService();
-            
+
             //var myLatlng = new google.maps.LatLng(43.1741766, -2.3199273);
             var directionsDisplay = new google.maps.DirectionsRenderer();
             var mapOptions = {
@@ -202,7 +196,7 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
                 var LatlngC = new google.maps.LatLng(lat, lng);
                 console.log("buymap" + LatlngC);
                 console.log("buymap2" + myLatlng);
-                var dist = (google.maps.geometry.spherical.computeDistanceBetween(LatlngC,myLatlng));
+                var dist = (google.maps.geometry.spherical.computeDistanceBetween(LatlngC, myLatlng));
                 console.log("jaione" + dist);
                 console.log("irizar" + distancia);
                 if (dist <= distancia) {
@@ -257,13 +251,13 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
 
     $scope.show = function(value) {
         distancia = value * 1000;
-        Geolocation.localizar(function(coords){
+        Geolocation.localizar(function(coords) {
             var myLatlng = new google.maps.LatLng(coords.latitude, coords.longitude);
-           // Db.getAllComercios(function(datos) {
-            $scope.DibujarMapa(distancia,myLatlng);
- //});
-            });
-        
+            // Db.getAllComercios(function(datos) {
+            $scope.DibujarMapa(distancia, myLatlng);
+            //});
+        });
+
 
     }
 
@@ -274,9 +268,9 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
 
 .controller('LoginCtrl', function($scope, Db) {
     console.log('LoginCtrl');
-    $scope.cargar=function(user){
-       
-        Db.cargar(user.username,user.password);
+    $scope.cargar = function(user) {
+
+        Db.cargar(user.username, user.password);
 
     };
 

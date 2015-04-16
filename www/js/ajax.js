@@ -5,6 +5,7 @@ angular.module('starter.ajax', [])
         $.getJSON('server/productos.json', {}, function(json) {
             success(json);
         });
+        
     };
     var cargarUsuarios = function(success) {
         $.getJSON('server/usuarios.json', {}, function(json) {

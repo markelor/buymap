@@ -22,17 +22,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
 
     //obtener datos ajax
 
-     var datos = "";
-    //cargar datos todas las listas
-    AJAX.cargarDatos(function(datos) {
-        Db.addAllListas(datos);
-        console.log('cargarDatos: ' + JSON.stringify(datos));
+     Db.getDb(function(db) {
+        console.log(db);
+        console.log(db._docCount);
+        if (db._docCount === -1) {
+            //primera vez
+            //cargar datos, todas las listas
+            AJAX.cargarDatos(function(datos) {
+                Db.addAllListas(datos);
+                console.log('cargarDatos: ' + JSON.stringify(datos));
+            });
+            console.log("ole");
+        }
     });
 
      var comercios = "";
 
     AJAX.cargarComercios(function(comercios){
-        Db.addAllComercios(comercios)
+        Db.addAllComercios(comercios);
            
     });
     //obtener los usuarios
@@ -42,6 +49,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
         Db.guardar(datos[i].username, datos[i].password, datos[i].email);
       }
     });
+
 
 })
 
@@ -55,7 +63,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
     $stateProvider
 
     // setup an abstract state for the tabs directive
-    .state('tab', {
+        .state('tab', {
         url: "/tab",
         abstract: true,
         templateUrl: "templates/tabs.html"
@@ -96,17 +104,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
 
 
     .state('registro', {
-            url: '/registro',
-            templateUrl: 'templates/registro2.html',
-            controller: 'RegistroCtrl'
-        })
+        url: '/registro',
+        templateUrl: 'templates/registro2.html',
+        controller: 'RegistroCtrl'
+    })
 
 
     .state('login', {
-            url: '/login',
-            templateUrl: 'templates/login.html',
-            controller: 'LoginCtrl'
-        });
+        url: '/login',
+        templateUrl: 'templates/login.html',
+        controller: 'LoginCtrl'
+    });
 
 
     /*.state('valoraciones',{
