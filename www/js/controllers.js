@@ -293,7 +293,7 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
 })
 
 
-.controller('valoracionesCtrl', function($scope, Db, AJAX) {
+.controller('valoracionesCtrl', function($scope, Db, AJAX, $ionicPopover, $ionicSideMenuDelegate) {
     console.log('valoracionesCtrl');
 
     var valoraciones = null;
@@ -305,4 +305,25 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
     });
 
 
-});
+    $ionicPopover.fromTemplateUrl('addReview.html', {
+        scope: $scope
+    }).then(function(popover) {
+        $scope.popover = popover;
+    });
+
+    $scope.openPopover = function(e) {
+        console.log('openPopover');
+        $scope.popover.show(e);
+    }
+
+    $scope.closePopover = function(e) {
+        console.log('closePopover');
+        $scope.popover.hide();
+    }
+
+    $scope.toggleLeft = function() {
+        $ionicSideMenuDelegate.toggleLeft();
+    };
+})
+
+
