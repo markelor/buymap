@@ -37,7 +37,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
             }
         });
 
-
     });
 
 
