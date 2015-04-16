@@ -21,9 +21,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
     });
 
     //obtener datos ajax
-    var datos = "";
-    var db = "";
-    Db.getDb(function(db) {
+
+     Db.getDb(function(db) {
         console.log(db);
         console.log(db._docCount);
         if (db._docCount === -1) {
@@ -37,9 +36,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
         }
     });
 
+     var comercios = "";
+
+    AJAX.cargarComercios(function(comercios){
+        Db.addAllComercios(comercios);
+           
+    });
+    //obtener los usuarios
+    AJAX.cargarUsuarios(function(datos) {
+        console.log(datos);
+        for(var i=0; i<datos.length;i++){
+        Db.guardar(datos[i].username, datos[i].password, datos[i].email);
+      }
+    });
 
 
 })
+
 
 .config(function($stateProvider, $urlRouterProvider) {
 

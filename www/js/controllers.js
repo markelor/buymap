@@ -164,115 +164,129 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
 
 
 
-.controller('RutaCtrl', ['$scope', '$ionicLoading', 'Geolocation', function($scope, $ionicLoading, Geolocation) {
-
+.controller('RutaCtrl', function($scope, $ionicSideMenuDelegate,
+    Geolocation, Db) {
+    //var distancia = 10000;
     $scope.toggleRight = function() {
         $ionicSideMenuDelegate.toggleRight();
+        console.log("menu desplazate");
     };
 
-    Geolocation.localizar(function(coords) {
-        console.log(coords);
-
-        console.log('RutaCtrl initialize');
-        var myLatlng = new google.maps.LatLng(coords.latitude, coords.longitude);
-
-        var mapOptions = {
-            center: myLatlng,
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-        console.log(document.getElementById("map"));
-
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: 'Zona'
+    $scope.GeoPosicionar = function() {
+        Geolocation.localizar(function(coords) {
+            var myLatlng = new google.maps.LatLng(coords.latitude, coords.longitude);
+            Geolocation.insertarMapa(myLatlng);
         });
-
-        $scope.map = map;
-    });
-}])
-
-
-
-
-
-
-/*.controller('RutaCtrl', function($scope, $ionicSideMenuDelegate, $ionicLoading, $compile,geolocation) {
-
-    $scope.toggleRight = function() {
-        $ionicSideMenuDelegate.toggleRight();
-    };
-    $scope.init = function() {
-
-        navigator.geolocation.getCurrentPosition(function(pos) {
-
-            $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-            //$scope.loading.hide();
-            console.log(pos.coords.latitude);
-        }, function(error) {
-            alert('Unable to get location: ' + error.message);
-        });
-        //function initialize() {
-        var myLatlng = new google.maps.LatLng(43.07493, -89.381388);
-        // var myLatlng=new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude
-
-        var mapOptions = {
-            center: myLatlng,
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-        var map = new google.maps.Map(document.getElementById("map"),
-            mapOptions);
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: 'Ubicación actual'
-        });
-
-
-        //Marker + infowindow + angularjs compiled ng-click
-        var contentString = "<div><a ng-click='clickTest()'>Click me!</a></div>";
-        var compiled = $compile(contentString)($scope);
-
-        var infowindow = new google.maps.InfoWindow({
-            content: compiled[0]
-        });
-
-        google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map, marker);
-        });
-
-        $scope.map = map;
-
-
-    };
-    //  google.maps.event.addDomListener(window, 'load', initialize);
-
-    $scope.centerOnMe = function() {
-        if (!$scope.map) {
-            return;
-        }
-
     };
 
-})*/
+    $scope.DibujarMapa = function(distancia, myLatlng) {
+
+        Db.getAllComercios(function(datos) {
+            console.log(datos + "data");
+            var waypts = new Array;
+            var directionsService = new google.maps.DirectionsService();
+            
+            //var myLatlng = new google.maps.LatLng(43.1741766, -2.3199273);
+            var directionsDisplay = new google.maps.DirectionsRenderer();
+            var mapOptions = {
+                center: myLatlng,
+                zoom: 5,
+                mapTypeId: google.maps.MapTypeId.HYBRID
+            };
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            directionsDisplay.setMap(map);
+            for (var i = 0; i <= datos.rows.length - 1; i++) {
+                lat = datos.rows[i].doc.latitud;
+                lng = datos.rows[i].doc.longitud;
+                nombre = datos.rows[i].doc.nombre + " " + datos.rows[i].doc.categoria;
+                var LatlngC = new google.maps.LatLng(lat, lng);
+                console.log("buymap" + LatlngC);
+                console.log("buymap2" + myLatlng);
+                var dist = (google.maps.geometry.spherical.computeDistanceBetween(LatlngC,myLatlng));
+                console.log("jaione" + dist);
+                console.log("irizar" + distancia);
+                if (dist <= distancia) {
+                    waypts.push({
+                        location: LatlngC,
+                        stopover: false
+                    });
+                    var marker = new google.maps.Marker({
+                        position: LatlngC,
+                        map: map,
+                        title: nombre
+                    });
+
+                    console.log(waypts[0].location);
+                    var request = {
+                        origin: myLatlng,
+                        destination: LatlngC,
+                        waypoints: waypts,
+                        travelMode: google.maps.TravelMode.WALKING
+                    };
+
+                    directionsService.route(request, function(response, status) {
+                        if (status == google.maps.DirectionsStatus.OK) {
+                            directionsDisplay.setDirections(response);
+                        }
+                    });
+
+
+                    console.log(nombre);
+                    google.maps.event.addListener(marker, 'click', showInfo);
+
+                    function showInfo() {
+                        //Aumentar el zoom del mapa
+                        map.setZoom(16);
+                        map.setCenter(marker.getPosition());
+                        //Construir una ventana de información
+                        var contentString = marker.title;
+                        var infowindow = new google.maps.InfoWindow({
+                            content: contentString
+                        });
+                        //Abrir la ventana de información
+                        infowindow.open(map, marker);
+                    }
+
+                }
+
+            }
+
+        });
+    }
+
+
+    $scope.show = function(value) {
+        distancia = value * 1000;
+        Geolocation.localizar(function(coords){
+            var myLatlng = new google.maps.LatLng(coords.latitude, coords.longitude);
+           // Db.getAllComercios(function(datos) {
+            $scope.DibujarMapa(distancia,myLatlng);
+ //});
+            });
+        
+
+    }
+
+
+})
 
 //Loginaren controllera
 
-.controller('LoginCtrl', function($scope) {
+.controller('LoginCtrl', function($scope, Db) {
     console.log('LoginCtrl');
+    $scope.cargar=function(user){
+       
+        Db.cargar(user.username,user.password);
+
+    };
+
 })
 
-.controller('RegistroCtrl', function($scope) {
+.controller('RegistroCtrl', function($scope, Db) {
+    console.log('Registro');
 
-
-    $scope.guardar = function() {
-        Registro.guardar($scope.username, $scope.password, $scope.email);
+    $scope.guardar = function(user) {
+        Db.guardar(user.username, user.password, user.email);
     };
 
 
