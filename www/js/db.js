@@ -22,8 +22,6 @@ angular.module('starter.db', [])
             };
 
 
-
-
             var addAllListas = function(data) {
 
                 var insertarListaDb = function(misListas) {
@@ -31,7 +29,7 @@ angular.module('starter.db', [])
                         // handle response
                     }).catch(function(err) {
                         console.log(err);
-                    })
+                    });
                 };
                 var indexListas = Object.keys(data.listas.lista).length;
 
