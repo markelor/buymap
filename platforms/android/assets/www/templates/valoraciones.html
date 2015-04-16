@@ -1,0 +1,45 @@
+<ion-header-bar class="bar-positive">
+    <button class="button button-icon icon ion-navicon" ng-click="toggleLeft()"></button>
+    <h1 class="title">Valoraciones</h1>
+    <button class="button button-clear button-large ion-plus-circled" ng-click="openPopover($event)"></button>
+</ion-header-bar>
+
+<ion-side-menus>
+    <ion-side-menu side="left">
+    <ul>
+        <li>Test 1</li>
+        <li>Test 2</li>
+        <li>Test 3</li>
+        <li>Test 4</li>
+        <li>Test 5</li>
+    </ul>
+    </ion-side-menu>
+</ion-side-menus>
+
+<ion-content>
+    <div class="card" ng-repeat="valoracion in valoraciones">
+        <div class="item item-divider row">
+            <span class="col">Usuario {{valoracion.userid}}</span>
+            <span class="col">Comercio: {{valoracion.storeid}}</span>
+        </div>
+        <div class="item item-text-wrap row">
+            <span class="col">Puntuación: {{valoracion.stars}}</span>
+            <p class="col-67"> {{valoracion.comment}} </p>
+        </div>
+    </div>
+</ion-content>
+
+<script id="addReview.html" type="text/ng-template">
+    <ion-popover-view>
+        <ion-header-bar class="bar-positive">
+            <h2>Agregar valoración</h2>
+        </ion-header-bar>
+        <ion-content>
+            <label>
+                <input></input>
+            </label>
+            <textarea></textarea>
+        </ion-content>
+    </ion-popover-view>
+</script>
+

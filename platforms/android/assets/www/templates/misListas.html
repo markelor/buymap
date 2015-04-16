@@ -1,0 +1,51 @@
+<ion-side-menus>
+    <!-- Center content -->
+    <ion-side-menu-content>
+        <ion-header-bar class="bar-positive">
+            <div class="buttons">
+                <button class="button button-icon icon ion-navicon-round" ng-click="toggleLeft(); hideOperationButtons()"></button>
+            </div>
+            <h1 class="title">Ionic opciones</h1>
+            <div class="buttons">
+                <button class="button" ng-click="data.showReorder = !data.showReorder">
+                    Ordenar
+                </button>
+            </div>
+        </ion-header-bar>
+        <ion-content>
+            <!-- The list directive is great, but be sure to also checkout the collection repeat directive when scrolling through large lists -->
+            <ion-list show-reorder="data.showReorder">
+                <ion-item ng-click="show(producto)" ng-repeat="producto in productos track by producto._id" producto="poducto" class="item-remove-animate">
+                    <button class="button button-clear button-dark">{{ producto.name }}</button>
+                    <ion-reorder-button class="ion-navicon" on-reorder="moveItem(producto, $fromIndex, $toIndex)"></ion-reorder-button>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu-content>
+    <!-- Left menu -->
+    <ion-side-menu side="left">
+        <ion-header-bar class="bar-positive">
+            <div class="buttons" >
+                <button class="button button-icon icon ion-trash-a" ng-click="showOperationButtons()"  ></button>
+            </div>
+            <h1 class="title">Ionic opciones</h1>
+        </ion-header-bar>
+        <ion-content>
+            <!-- The list directive is great, but be sure to also checkout the collection repeat directive when scrolling through large lists -->
+            <ion-list >
+                <ion-item ng-click="showLista(lista,$index)" ng-repeat="lista in listas track by lista._id" lista="lista" class="item-remove-animate">
+                   
+                    <span class="btnListas"  ng-show="(showButtons == true)" ng-hide ="(showButtons == false)" >  
+                        <button class=" item-button-left button button-icon icon ion-plus-circled" ng-click="addLista()">
+                        </button>
+                         <button class=" item-button-left button button-icon icon ion-minus-circled" ng-click="deleteLista($index)">
+                        </button>                  
+                    </span>
+                  
+                    <button class="button button-clear button-dark">{{lista.fecha}}</button>
+                    <ion-reorder-button class="ion-navicon"></ion-reorder-button>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

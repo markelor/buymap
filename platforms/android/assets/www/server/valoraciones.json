@@ -1,0 +1,62 @@
+[{
+    "_id": 0,
+    "storeid": 0,
+    "stars": 3,
+    "userid": 0,
+    "comment": "Establecimiento recomendable. Los precios están en la media"
+},{
+    "_id": 1,
+    "storeid": 1,
+    "stars": 5,
+    "userid": 0,
+    "comment": "Servicio excelente y además precios muy competitivos. Muy recomendble!"
+},{
+    "_id": 2,
+    "storeid": 2,
+    "stars": 1,
+    "userid": 0,
+    "comment": "Mal abastecido, pocas marcas y PVPs muy por encima de lo esperado"
+},{
+    "_id": 3,
+    "storeid": 3,
+    "stars": 2,
+    "userid": 0,
+    "comment": "Precios económicos, pero hay poco personal. Mucha cola para caja."
+},{
+    "_id": 4,
+    "storeid": 4,
+    "stars": 3,
+    "userid": 0,
+    "comment": "Muy buena calidad, precios bastante elevados, como un 20% más que en otros sitios"
+},{
+    "_id": 5,
+    "storeid": 5,
+    "stars": 4,
+    "userid": 0,
+    "comment": "Establecimiento recomendable. Trato muy bueno"
+},{
+    "_id": 6,
+    "storeid": 6,
+    "stars": 1,
+    "userid": 0,
+    "comment": "Problemas para pagar con datáfono. Poco personal, se pierde mucho tiempo y encima es caro"
+},{
+    "_id": 7,
+    "storeid": 7,
+    "stars": 3,
+    "userid": 0,
+    "comment": "Servicio correcto, tienen muchas marcas...todas algo caras..."
+},{
+    "_id": 8,
+    "storeid": 8,
+    "stars": 4,
+    "userid": 0,
+    "comment": "Suelo hacer aquí siempre las compras y estoy muy contenta"
+},{
+    "_id": 9,
+    "storeid": 9,
+    "stars": 3,
+    "userid": 0,
+    "comment": "Los precios están en la media"
+}
+]

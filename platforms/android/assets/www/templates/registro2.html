@@ -1,0 +1,23 @@
+
+    <ion-view view-title="Registro">
+        <ion-content class="padding">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label" >Username</span>
+                    <input type="text" ng-model="user.username">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input type="password" ng-model="user.password">
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Email</span>
+                    <input type="email" ng-model="user.email" placeholder="pon tu email">
+                </label>
+                <button class="button button-positive" ng-model="gorde" ng-click="guardar(user)" >
+                    Datuak Bidali
+                </button>
+            </div>
+        </ion-content>
+    </ion-view>
+
