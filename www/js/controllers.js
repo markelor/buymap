@@ -246,7 +246,7 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
             }
 
         });
-    }
+    };
 
 
     $scope.show = function(value) {
@@ -259,7 +259,7 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
         });
 
 
-    }
+    };
 
 
 })
@@ -308,16 +308,16 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
     $scope.openPopover = function(e) {
         console.log('openPopover');
         $scope.popover.show(e);
-    }
+    };
 
     $scope.closePopover = function(e) {
         console.log('closePopover');
         $scope.popover.hide();
-    }
+    };
 
     $scope.toggleLeft = function() {
         $ionicSideMenuDelegate.toggleLeft();
     };
-})
+});
 
 
