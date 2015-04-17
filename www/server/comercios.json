@@ -1,7 +1,7 @@
 {
     "comercios": {
         "comercio": [{
-            "_id" : "C_1",
+            "_id" : "C1",
             "nombre": "Panaderia Olazabal",
             "longitud":"-3.703308", 
             "latitud":"40.416875",
@@ -18,7 +18,7 @@
 
         },
         {
-            "_id" : "C_2",
+            "_id" : "C2",
             "nombre": "Carniceria Iñigo",
             "latitud":"43.296697",
             "longitud":"-2.009107",
@@ -43,7 +43,7 @@
 
         },
          {
-            "_id" : "C_3",
+            "_id" : "C3",
             "nombre": "Fruteria Rita",
             "latitud":"43.312324",
             "longitud":"-2.009689",
@@ -60,7 +60,7 @@
         },
 
         {
-            "_id" : "C_4",
+            "_id" : "C4",
             "nombre": "Milar Larramendi",
             "latitud":"43.3072927",
             "longitud":"-1.973883",
@@ -76,7 +76,7 @@
             }]
         },
           {
-            "_id" : "C_5",
+            "_id" : "C5",
             "nombre": "Alfresco",
             "latitud":"43.312324,",
             "longitud":"-2.009689",

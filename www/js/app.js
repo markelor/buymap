@@ -46,25 +46,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
             if (results.total_rows === 0) {
                 //primera vez
                 //cargar datos, todas las listas
-                AJAX.cargarDatos(function(datos) {
-                    Db.addAllListas(datos);
-                    console.log('cargarDatos: ' + JSON.stringify(datos));
-                    console.log("behin bakarrik");
-                });
-            } else {
-                console.log("ez du kargatzen");
-            }
-        });
-
-
-    });
-
-    Db.getDb(function(db) {
-        db.allDocs({}).then(function(results) {
-            console.log(results);
-            if (results.total_rows === 0) {
-                //primera vez
-                //cargar datos, todas las listas
                 AJAX.cargarComercios(function(comercios) {
                     Db.addAllComercios(comercios);
                     console.log("behin bakarrik comercios");
@@ -97,9 +78,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
 
 
     });
-
-
-
 
 
 })

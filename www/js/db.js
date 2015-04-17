@@ -18,6 +18,8 @@ angular.module('starter.db', [])
             for (var i = 0; i < data.rows.length; i++) {
                 datos.push(data.rows[i].doc);
             }
+            console.log("eeeeee");
+            console.log(data);
             success(datos);
         });
     };
@@ -124,13 +126,16 @@ angular.module('starter.db', [])
     };
     */
     var getAllComercios = function(success) {
-
+        console.log("a");
 
         localDB.allDocs({
+
             include_docs: true,
             attachments: true,
-            startkey: 'C_'
+            startkey: 'C'
         }, function(err, response) {
+             console.log("aaaaaaaa");
+            console.log(response);
             success(response);
         });
     };

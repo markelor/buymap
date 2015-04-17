@@ -199,11 +199,7 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
                 lng = datos.rows[i].doc.longitud;
                 nombre = datos.rows[i].doc.nombre + " " + datos.rows[i].doc.categoria;
                 var LatlngC = new google.maps.LatLng(lat, lng);
-                console.log("buymap" + LatlngC);
-                console.log("buymap2" + myLatlng);
                 var dist = (google.maps.geometry.spherical.computeDistanceBetween(LatlngC, myLatlng));
-                console.log("jaione" + dist);
-                console.log("irizar" + distancia);
                 if (dist <= distancia) {
                     waypts.push({
                         location: LatlngC,
@@ -276,6 +272,7 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
     $scope.cargar = function(user) {
         console.log("oo");
          console.log(user);
+
         Db.cargar(user.username, user.password);
 
     };
