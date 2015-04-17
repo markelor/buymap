@@ -135,6 +135,7 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
              }, 10000);*/
 
         };
+        $scope.$apply();
 
     });
 

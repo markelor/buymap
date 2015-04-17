@@ -1,9 +1,11 @@
 [{
+        "_id":"u1",
         "username": "prueba4",
         "password": "pass3",
         "email": "prueba@gmail.com"
 
     }, {
+        "_id":"u2",
         "username": "prueba2",
         "password": "pass3",
         "email": "prueba@gmail.com"
@@ -11,6 +13,7 @@
     },
 
     {
+        "_id":"u3",
         "username": "prueba",
         "password": "pass",
         "email": "prueba@gmail.com"
