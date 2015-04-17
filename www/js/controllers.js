@@ -36,9 +36,10 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
             console.log(today);
 
             indice = $scope.listas.length - 1;
-            idLista = parseInt($scope.listas[indice]._id) + 1;
-            idLista = idLista.toString();
-
+            //idLista = parseInt($scope.listas[indice]._id) + 1;
+            //idLista = idLista.toString();
+            idLista = $scope.listas[indice]._id + 1;
+            idLista=idLista.toString();
 
             lista = {
                 "_id": idLista,
@@ -54,8 +55,11 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
         };
         $scope.deleteLista = function(index) {
             //borrar producto
+            //obtener copia de la lista para eliminar
+            lista=$scope.listas[index];
             $scope.listas.splice(index, 1);
-            Db.deleteLista($scope.listToAdd);
+            console.log(lista);
+            Db.deleteLista(lista);
         };
 
 
