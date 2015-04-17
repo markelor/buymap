@@ -20,8 +20,8 @@
         {
             "_id" : "C_2",
             "nombre": "Carniceria Iñigo",
-            "latitud":"43.177476",
-            "longitud":"-2.312301",
+            "latitud":"43.296697",
+            "longitud":"-2.009107",
             "categoria": "Carniceria",
             "productos": [{
                 "_id": "P_3",
@@ -45,8 +45,8 @@
          {
             "_id" : "C_3",
             "nombre": "Fruteria Rita",
-            "latitud":"43.3072927",
-            "longitud":"-1.973883",
+            "latitud":"43.312324",
+            "longitud":"-2.009689",
             "categoria": "fruteria",
             "productos": [{
                 "_id": "P_7",
@@ -78,8 +78,8 @@
           {
             "_id" : "C_5",
             "nombre": "Alfresco",
-            "latitud":"43.180469",
-            "longitud":"-2.3123127",
+            "latitud":"43.312324,",
+            "longitud":"-2.009689",
             "categoria": "Pescaderia",
             "productos": [{
                 "_id": "P_7",
@@ -94,6 +94,5 @@
         }]
     }
 }
-
 
 
