@@ -3,68 +3,59 @@
     <ion-side-menu-content>
         <ion-header-bar class="bar-dark" ng-init="GeoPosicionar()">
             <h1 class="title">Ruta de compra</h1>
-
             <div class="buttons">
                 <button class="button button-icon icon ion-navicon-round" ng-click="toggleRight()"></button>
             </div>
-
         </ion-header-bar>
         <ion-content>
             <div id="map" data-tap-disabled="true"></div>
         </ion-content>
     </ion-side-menu-content>
     <ion-side-menu side="right">
-        <ion-list >
-            <ion-item >Distancia mas lejana</ion-item>
+        <ion-list>
+            <ion-item>Distancia mas lejana</ion-item>
             <div class="list">
-<form name="form" ng-controller="RutaCtrl">
-  <label class="item item-radio">
-    <input type="radio" name="group">
-    <input type="radio" name="group" ng-model="value" value="0.1" ng-change="show(value)";>
-   <i class="radio-icon ion-checkmark"></i>
-  </label>
-  <label class="item item-radio">
-    <input type="radio" name="group" ng-model="value" value="1.2" ng-change="show(value)";>
-    <div class="item-content">1km</div>
-   <i class="radio-icon ion-checkmark"></i>
-  </label>
-  <label class="item item-radio">
-    <input type="radio" name="group" ng-model="value" value="0.5" ng-change="show(value)";>
-    <div class="item-content">1,5km</div>
-   <i class="radio-icon ion-checkmark"></i>
-  </label>
-  <label class="item item-radio">
-    <input type="radio" name="group" ng-model="value" value="2" ng-change="show(value)";>
-    <div class="item-content">2km</div>
-   <i class="radio-icon ion-checkmark"></i>
-  </label>
-  <label class="item item-radio">
-    <input type="radio" name="group" ng-model="value" value="2.5" ng-change="show(value)";>
-    <div class="item-content">2,5km</div>
-   <i class="radio-icon ion-checkmark"></i>
-  </label>
-  <label class="item item-radio">
-    <input type="radio" name="group" ng-model="value" value="3" ng-change="show(value)";>
-    <div class="item-content">3km</div>
-   <i class="radio-icon ion-checkmark"></i>
-  </label>
-  <label class="item item-radio">
-    <input type="radio" name="group" ng-model="value" value="3.5" ng-change="show(value)";>
-    <div class="item-content">3,5km</div>
-   <i class="radio-icon ion-checkmark"></i>
-  </label>
- </form>
-
-  
-
-</div>
-        
+                <form name="form" ng-controller="RutaCtrl">
+                    <label class="item item-radio">
+                        <input type="radio" name="group" ng-model="value" value="0.5" ng-change="show(value)" ;>
+                        <div class="item-content">0,5km</div>
+                        <i class="radio-icon ion-checkmark"></i>
+                    </label>
+                    <label class="item item-radio">
+                        <input type="radio" name="group" ng-model="value" value="1" ng-change="show(value)" ;>
+                        <div class="item-content">1km</div>
+                        <i class="radio-icon ion-checkmark"></i>
+                    </label>
+                    <label class="item item-radio">
+                        <input type="radio" name="group" ng-model="value" value="1.5" ng-change="show(value)" ;>
+                        <div class="item-content">1,5km</div>
+                        <i class="radio-icon ion-checkmark"></i>
+                    </label>
+                    <label class="item item-radio">
+                        <input type="radio" name="group" ng-model="value" value="2" ng-change="show(value)" ;>
+                        <div class="item-content">2km</div>
+                        <i class="radio-icon ion-checkmark"></i>
+                    </label>
+                    <label class="item item-radio">
+                        <input type="radio" name="group" ng-model="value" value="2.5" ng-change="show(value)" ;>
+                        <div class="item-content">2,5km</div>
+                        <i class="radio-icon ion-checkmark"></i>
+                    </label>
+                    <label class="item item-radio">
+                        <input type="radio" name="group" ng-model="value" value="3" ng-change="show(value)" ;>
+                        <div class="item-content">3km</div>
+                        <i class="radio-icon ion-checkmark"></i>
+                    </label>
+                    <label class="item item-radio">
+                        <input type="radio" name="group" ng-model="value" value="3.5" ng-change="show(value)" ;>
+                        <div class="item-content">3,5km</div>
+                        <i class="radio-icon ion-checkmark"></i>
+                    </label>
+                </form>
+            </div>
     </ion-side-menu>
     <div class="list">
-
-  
-
-</div>
+    </div>
     <ion-footer-bar class="bar-dark">
         <a ng-click="GeoPosicionar()" class="button button-icon icon ion-navigate">Buscar mi ubicación</a>
     </ion-footer-bar>
