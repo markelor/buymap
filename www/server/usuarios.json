@@ -1,20 +1,18 @@
 [{
-        "_id":"u1",
-        "username": "prueba4",
+       
+        "_id": "prueba4",
         "password": "pass3",
         "email": "prueba@gmail.com"
 
     }, {
-        "_id":"u2",
-        "username": "prueba2",
+        "_id": "prueba2",
         "password": "pass3",
         "email": "prueba@gmail.com"
 
     },
 
     {
-        "_id":"u3",
-        "username": "prueba",
+        "_id": "prueba",
         "password": "pass",
         "email": "prueba@gmail.com"
 

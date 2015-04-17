@@ -83,17 +83,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.db', 'starte
             if (results.total_rows === 0) {
                 //primera vez
                 //cargar datos, todas las listas
-                AJAX.cargarComercios(function(comercios) {
-                    Db.addAllComercios(comercios);
-                    console.log("behin bakarrik login");
+                AJAX.cargarUsuarios(function(datos) {
+                    console.log(datos);
+
+                    for (var i = 0; i < datos.length; i++) {
+                        Db.guardar(datos[i]._id, datos[i].password, datos[i].email);
+                    }
                 });
             } else {
-                console.log("ez du kargatzen login");
+                console.log("ez du kargatzen comercios");
             }
         });
 
 
     });
+
+
+
+
 
 })
 

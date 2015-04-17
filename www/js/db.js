@@ -132,7 +132,7 @@ angular.module('starter.db', [])
             startkey: 'C_'
         }, function(err, response) {
             success(response);
-        })
+        });
     };
 
     var addAllComercios = function(data) {
@@ -187,9 +187,16 @@ angular.module('starter.db', [])
     };
     var cargar = function(username, password) {
         //console.log("kaixo "+username+" pasahitza "+password);
+        console.log("aqui");
+        console.log(username);
+        console.log(password);
 
         localDB.get(username).then(function(doc) {
+            console.log("aquiaaa");
+            console.log(doc);
             if (doc.password === password) {
+                console.log(doc.pasword);
+                console.log(password);
                 console.log("funtziona");
                 location.href = "#/tab/misListas";
 

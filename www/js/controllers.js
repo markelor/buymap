@@ -274,7 +274,8 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
 .controller('LoginCtrl', function($scope, Db) {
     console.log('LoginCtrl');
     $scope.cargar = function(user) {
-
+        console.log("oo");
+         console.log(user);
         Db.cargar(user.username, user.password);
 
     };
@@ -284,7 +285,7 @@ angular.module('starter.controllers', ['starter.db', 'starter.geolocation', 'sta
     console.log('Registro');
 
     $scope.guardar = function(user) {
-        Db.guardar(user.username, user.password, user.email);
+        Db.guardar(user._id, user.password, user.email);
     };
 
 
